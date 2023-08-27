@@ -1,0 +1,19 @@
+task 1 :
+listde olan 1ci ve sonuncu elementleri tap
+
+task 2 :
+test_list = [5, 6, [], 3, [], [], 9]
+
+bos olanlari listden cix ve ededleri ekrana yazdir
+
+task3:
+bir eded listimiz var adlardan ibaret
+bir eded input var sorusur ad daxil edin (1), Adi silin (2)
+1i basanda yeni input acilacaq sorusacaq : ad elave edin  adi yaziriq enteri basiriq listden hemin adi silir
+2ni basanda sorusur : silmey istediyiniz adi secin , adi yazib enteri basanda hemin adi listden silir
+error mesajlari: Ad daxil etmediniz,Ad cox uzundur maksimum 15 herf
+
+task4:
+
+ededin musbet ve ya menfi olmasini tapin
+	 

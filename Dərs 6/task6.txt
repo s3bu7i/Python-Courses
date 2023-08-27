@@ -1,0 +1,12 @@
+task1 :
+
+tuple data tipine bir element elave et
+
+task2:
+
+bir dict var 
+proqram qur sorushsun Daxil edin 1 Keys 2 Values
+1 - e basilanda dictdeki keysleri yazdirsin
+2 - e basilanda dictdeki valueleri yazdirsin
+
+error mesaji bos olanda ad daxil etmediniz desin

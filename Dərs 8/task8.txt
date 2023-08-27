@@ -1,0 +1,27 @@
+bir program qur 
+sorushsun : Dogum gununuzu daxil edin 
+dogum gununu daxil etdikden sonra hesablasin : Siz heyatda xxxxxxxxxx saniye xxxxxxx deqiqe xxxxx saat xxxx gun xxx aydir ki movcudsunuz ve sizin xx yashiniz var  
+
+
+
+from datetime import datetime
+
+def calculate_age(birth_date):
+    today = datetime.now()
+    age = today - birth_date
+    years = age.days // 365
+    months = (age.days % 365) // 30
+    days = age.days % 30
+    hours, remainder = divmod(age.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    return years, months, days, hours, minutes, seconds
+
+# İstifadəçidən doğum tarixini almaq
+birth_date_str = input("Doğum tarixinizi gün/ay/ilə formatında daxil edin (misal: 01/01/2000): ")
+birth_date = datetime.strptime(birth_date_str, "%d/%m/%Y")
+
+# Yaşın hesablanması
+years, months, days, hours, minutes, seconds = calculate_age(birth_date)
+
+# Nəticəni çap etmək
+print(f"Siz heyatda {years} il {months} ay {days} gün {hours} saat {minutes} dəqiqə {seconds} saniyə yaşayırsınız.")

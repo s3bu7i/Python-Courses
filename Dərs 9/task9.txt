@@ -1,0 +1,6 @@
+txt faylimiz var 10 elementi var alt alta
+
+
+proqram sorusur : 1 Spesifik Elementi Yazdir : 2 Fayli sil
+1-i basanda spesifik elementleri ele kecirsin
+2ni basanda example.txt faylini silsin

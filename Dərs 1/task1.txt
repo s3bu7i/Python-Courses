@@ -1,0 +1,91 @@
+ders1 task1
+
+#Kimdir
+
+# Aslan -> Aslan emi ogludur
+# Imran -> Imran dayi ogludur
+# Afaq -> Afaq bibi qizidir
+# Uzeyir -> Uzeyir xala ogludur
+# Shahin -> Shahin yaxin dostdur
+
+Ad daxil edin:
+Aslan
+
+Aslan emi ogludur
+--------------------------------
+Ad daxil edin:
+Afaq
+
+Afaq bibi qizidir
+--------------------------------
+Ad daxil edin:
+
+Siz ad daxil etmediniz
+--------------------------------
+Ad daxil edin:
+Murad
+
+Murad kimdir? Men onu tanimadim
+
+task2
+
+# Login: nesib
+# Parol: 12345
+
+# Login:
+# nesib
+# Parol:
+# 12345
+
+# Xosh geldiniz
+
+# - Login yanlishdir
+# - Parol yanlishdir
+# - Login ve parol yanlishdir
+# - Login daxil etmediniz
+# - Parol daxil etmediniz
+# - Login ve parol daxil etmediniz
+
+task3
+
+Kullanıcıdan 3 tane sayı alın ve en büyük sayıyı ekrana yazdırın.
+
+ders2 task
+
+
+
+task4
+Kullanıcıdan alınan boy ve kilo değerlerine göre beden kitle indeksini hesaplayın ve şu kurallara göre ekrana şu yazıları yazdırın.
+
+ Beden Kitle İndeksi: Kilo / Boy(m) *  Boy(m)
+
+ BKİ 18.5'un altındaysa -------> Zayıf
+
+ BKİ 18.5 ile 25 arasındaysa ------> Normal
+
+ BKİ 25 ile 30 arasındaysa --------> Fazla Kilolu
+
+ BKİ 30'un üstündeyse -------------> Obez
+
+
+
+
+
+Problem 1
+boy = float(input("Boyunuzu Giriniz:"))
+kilo = int(input("Kilonuzu Giriniz:"))
+
+bki =  kilo / (boy ** 2)
+
+if (bki < 18.5):
+    print("Zayıf")
+elif (bki >= 18.5 and bki < 25):
+    print("Normal")
+elif (bki >= 25 and bki < 30):
+    print("Fazla Kilolu")
+else:
+    print("Obez")
+Boyunuzu Giriniz:1.74
+Kilonuzu Giriniz:76
+Fazla Kilolu
+
