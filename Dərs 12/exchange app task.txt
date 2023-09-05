@@ -1,0 +1,10 @@
+Exchange proqrami:
+
+	Satiram (AZN | USD | EUR): AZN
+	Aliram (AZN | USD | EUR ): USD
+
+	Mebleg: 100
+
+	100 AZN = 59 USD
+
+	her 3 valyutani hesablayin

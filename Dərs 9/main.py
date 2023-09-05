@@ -44,7 +44,8 @@ while True:
     else:
         print("Daxil etdiyinz nömrədə səhvlik var, yenidən cəhd edin")
     time.sleep(3)
-    
+
+
     
 
 
