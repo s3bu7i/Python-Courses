@@ -17,15 +17,28 @@
     {% else %}
         <h1>Bu dogru deyil</h1>
     {% endif %} -->
-    <form action="" method="post">
+    <!-- <form action="" method="post">
 
       {% csrf_token %}
       <input type="text" name="name" />
 
       <button type="submit">Click me</button>
     </form>
+     -->
     
-    {{ message }}
+    
+    <a href="{% url 'about' %}">About Page</a><br>
+    <a href="{% url 'contactus' %}">Contact Us</a>
+     <form action="" method="post">
+        {% csrf_token %}
+        Name:
+        <input type="text" name = 'name'>
+        <br><br>
+        <button type="submit">Click me</button>
+        {{ message }}
+
+
+     </form>
 
   </body>
 </html>

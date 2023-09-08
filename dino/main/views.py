@@ -7,10 +7,25 @@ def index(request):
     # a = 6
     # b = 44
     # return render(request, 'main/index.html', {'a':a, 'b':b})
-    message = ""
+    # message = ""
     
+    # if request.method == 'POST':
+    #     text = request.POST['name']
+    #     message = "Your name is " + str(text)
+    # return render(request, 'main/index.html', {'message':message})
+    message = ''
     if request.method == 'POST':
-        text = request.POST['name']
-        message = "Your name is " + str(text)
+        if request.POST['name'] != '':
+            message = request.POST['name']
+            
+        else:
+            message = "Enter the name "
     
-    return render(request, 'main/index.html', {'message':message})
+    return render(request, 'main/index.html')
+
+def about(request):
+    return render(request, 'main/about.html')
+
+def contactus(request):
+    return render(request, 'main/contactus.html')
+
