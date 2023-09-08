@@ -6,8 +6,6 @@ db = sqlite3.connect('atm.db')
 sql = db.cursor()
 
 sql.execute(" CREATE TABLE IF NOT EXISTS atm (pin INT,cash INT) ")
-
-
 pin = int(input("Pin kodu daxil edin : "))
 
 
@@ -15,27 +13,20 @@ sql.execute(f"SELECT pin FROM atm WHERE pin == '{pin}' ")
 
 if pin in sql.fetchone():
     
-
-
     while True:
 
         secim = int(input(""" 
-                            
+                                                  
         (1) Balansi yoxla\n
         (2) Kartdan Pul Cixar\n
         (3) Karta Medaxil et\n
         (4) Pini deyish\n
         (5) Cixish et"
 
-                            
-                        """))
-        
-        
-        
+"""))
         if secim == 1:
-            
-        
-            
+
+
             sql.execute(f"SELECT cash FROM atm WHERE pin == '{pin}' ")
             
             print(sql.fetchone())

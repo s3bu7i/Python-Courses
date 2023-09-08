@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Django project</title>
-</head>
-<body>
-    {% if x == 0 %}
-    {% endfor %}
+  </head>
+  <body>
+    <!-- {{ content }} -->
 
-</body>
+    <!-- {% for x in content %}
+    {{x}}<br>
+    {% endfor %} -->
+
+    <!-- {% if a == b %}
+        <h1>Bu dogrudur</h1>
+    {% else %}
+        <h1>Bu dogru deyil</h1>
+    {% endif %} -->
+    <form action="" method="post">
+
+      {% csrf_token %}
+      <input type="text" name="name" />
+
+      <button type="submit">Click me</button>
+    </form>
+    
+    {{ message }}
+
+  </body>
 </html>

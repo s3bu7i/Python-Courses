@@ -1,18 +1,16 @@
 from django.shortcuts import render
 
 # Create your views here.
-
-
 def index(request):
-    num1 = 1
-    num2 = 2
-    num3 = 3
     
-    context = {
-        'data1': num1,
-        'data2': num2,
-        'data3': num3
-    }
+    # text = "Python"
+    # a = 6
+    # b = 44
+    # return render(request, 'main/index.html', {'a':a, 'b':b})
+    message = ""
     
-    return render(request, 'main/index.html', {'context': context})    
-
+    if request.method == 'POST':
+        text = request.POST['name']
+        message = "Your name is " + str(text)
+    
+    return render(request, 'main/index.html', {'message':message})
