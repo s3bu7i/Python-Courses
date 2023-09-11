@@ -27,7 +27,7 @@
      -->
     
     
-    <a href="{% url 'about' %}">About Page</a><br>
+    <!-- <a href="{% url 'about' %}">About Page</a><br>
     <a href="{% url 'contactus' %}">Contact Us</a>
      <form action="" method="post">
         {% csrf_token %}
@@ -38,7 +38,22 @@
         {{ message }}
 
 
-     </form>
+     </form> -->
+
+    <form action="{% url 'index' %}" method="post">
+      {% csrf_token %}
+      Ad:
+      <input type="text" name = 'name'>
+      <br>
+      Soyad:
+      <input type="text" name = 'surname'>
+      <br>
+      Email:
+      <input type="text" name = 'email'>
+      <br>
+
+
+    </form>
 
   </body>
 </html>

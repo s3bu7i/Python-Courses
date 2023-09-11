@@ -1,0 +1,8 @@
+1 eded input var
+
+yaziram: Python ve duymeni basdim 
+	
+	ekrana yazdi :	6 herf var
+
+Yazdigim her hansi ada uygun herfleri sayib ekrana cixarsin
+

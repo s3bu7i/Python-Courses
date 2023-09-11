@@ -13,14 +13,17 @@ def index(request):
     #     text = request.POST['name']
     #     message = "Your name is " + str(text)
     # return render(request, 'main/index.html', {'message':message})
-    message = ''
-    if request.method == 'POST':
-        if request.POST['name'] != '':
-            message = request.POST['name']
+    # message = ''
+    # if request.method == 'POST':
+    #     if request.POST['name'] != '':
+    #         message = request.POST['name']
             
-        else:
-            message = "Enter the name "
+    #     else:
+    #         message = "Enter the name "
     
+    if request.method == 'POST':
+        message = 
+      
     return render(request, 'main/index.html')
 
 def about(request):
