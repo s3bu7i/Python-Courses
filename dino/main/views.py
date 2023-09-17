@@ -21,8 +21,7 @@ def index(request):
     #     else:
     #         message = "Enter the name "
     
-    if request.method == 'POST':
-        message = 
+
       
     return render(request, 'main/index.html')
 
