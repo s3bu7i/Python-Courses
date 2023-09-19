@@ -1,0 +1,21 @@
+1. Create function  called Junior without any parametrs and print  ' '
+2. Create function named Calc with two parametrs, return sum, subtraction , multipyl and division of
+parametrs and print it
+3. Creata function and write docstring inside the function and print docstring
+4. Create function with one parametr , create list with multiple numbers named nums and 
+create empty list named even_nums, find even numbers from nums list and add to even_nums as local variable and 
+print it
+5. print sum of (3,7,9,15) with *args
+6. create funtion named infos , use **kwargs , assign values as infos(name1 = 'Aqshin',
+						             name2 = 'Nuray',
+						             name3 = 'Shalala'
+						             name4 = 'Mirza' )
+and print 'Your name is 'names''
+
+7. Creata Course class and assign class variables named 'teacher', 'course' , 
+print (This 'course ' is taught by 'teacher' ) .  (Use f.string)
+8. Create Course class, use constructor , assign to construcotr, course, teacher, price and duration variables, 
+create object and print 'This {a.course} is taught by (a.teacher), duration is (a.duration) and price is (a.price) ' . (Use f.string)
+9. Create instance method named show()  inside Course class and print ''Best 'price' for this 'course' ''
+10. Create Course class, use constructor , assign to construcotr *args and create self.course ,self.teachers variables, create object and print it
+ 11. Write same task with **kwargs

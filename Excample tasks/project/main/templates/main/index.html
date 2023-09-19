@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+
+
+  <a href="{% url 'elaqe' %}">Elaqe</a>
+  <a href="{% url 'about' %}"> Haqqinda </a>
+  <a href="{% url 'calculator' %}">Calculator</a>
+
+  <br><br>
+
+  <!-- <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    Ad:
+    <input type="text" name="ad">
+    <br>
+    Soyad:
+    <input type="text" name="soyad">
+    <br>
+    Email:
+    <input type="text" name="email">
+    <br><br>
+    <button type="submit">Daxil et</button>
+
+  </form> -->
+
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <input type="text" name="hesabla">
+    <br><br>
+    <button type="submit">Daxil et</button>
+
+  </form>
+
+  
+  {{ mesaj }}
+
+
+ 
+
+  
+
+
+    
+</body>
+</html>

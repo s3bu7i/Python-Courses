@@ -1,0 +1,23 @@
+Orduya Destek Fondu
+
+2 eded input :
+	
+	AD
+	SOYAD
+	 daxil et
+
+ikinci 2 eded input:
+	
+	EMAIL
+	YASH
+	daxil et
+
+ucuncu 2 eded input:
+	
+	MAASH
+	MEBLEG
+	DAXIL ET
+
+
+MESAJ : hormetli AD VE SOYAD Sizin MEBLEG yardiminiz qebul olundu
+ERROR : Eger maash  MAASH < 500 : Daxil etdiyi mebligin 30%i

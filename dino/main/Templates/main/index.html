@@ -25,22 +25,21 @@
       <button type="submit">Click me</button>
     </form>
      -->
-    
-    
-    <!-- <a href="{% url 'about' %}">About Page</a><br>
-    <a href="{% url 'contactus' %}">Contact Us</a>
-     <form action="" method="post">
+
+    <form>
+      <a href="{% url 'about' %}">About Page</a><br />
+      <a href="{% url 'contactus' %}">Contact Us</a>
+      <a href="{% url 'printword' %}">Print Word</a>
+      <!-- <form action="" method="post">
         {% csrf_token %}
         Name:
         <input type="text" name = 'name'>
         <br><br>
         <button type="submit">Click me</button>
-        {{ message }}
+        {{ message }} -->
+    </form>
 
-
-     </form> -->
-
-    <form action="{% url 'index' %}" method="post">
+    <!-- <form action="{% url 'index' %}" method="post">
       {% csrf_token %}
       Ad:
       <input type="text" name = 'name'>
@@ -51,9 +50,9 @@
       Email:
       <input type="text" name = 'email'>
       <br>
+      <button type="submit">Click me</button>
 
 
-    </form>
-
+    </form> -->
   </body>
 </html>

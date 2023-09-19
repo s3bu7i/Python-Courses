@@ -1,0 +1,15 @@
+
+1)radio taskini checkboxla et
+
+2)exchange proqrami yalniz aznden diger valyutalara
+
+goruntu:
+	
+    Daxiledin : 100
+	100 azn = 58 usd
+
+	3 eded button var
+	USD  EUR  ALL
+	USDve ya EUR basildiqda yazdigimiz neticeni hesablayib ekrana versin
+	ALL basildiqda her ikisini ekrana versin
+
