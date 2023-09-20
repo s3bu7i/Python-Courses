@@ -1,0 +1,93 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+
+<br><br><br>
+
+
+<div class="container">
+
+<table class="table table-hover ">
+
+
+    <thead class="thead-dark">
+
+        <tr>
+
+            <th>N</th>
+            <th>Ad</th>
+            <th>Metn</th>
+            <th>Tarix</th>
+
+
+        </tr>
+
+
+    </thead>
+
+
+    
+    {% for x in data %}
+
+
+    <tbody>
+
+
+        <tr>
+
+            <td>{{ forloop.counter }}</td>
+
+            <td>{{ x.ad }}</td>
+            <td>{{ x.metn }}</td>
+            <td> {{ x.tarix }}</td>
+
+
+        </tr>
+
+
+    </tbody>
+
+
+    {% endfor %}
+
+
+
+
+
+
+</table>
+
+
+
+
+</div>
+
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="ad">Ad</label>
+            <input type="text" class="form-control" name="ad" id="ad" placeholder="Ad">
+        </div>
+        <div class="form-group">
+            <label for="metn">Metn</label>
+            <input type="text" class="form-control" name="metn" id="metn" placeholder="Metn">
+        </div>
+        <button type="submit">
+            
+        </button>
+
+    </form>
+
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

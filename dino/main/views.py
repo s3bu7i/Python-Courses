@@ -32,8 +32,6 @@ def contactus(request):
     return render(request, 'main/contactus.html')
 
 def printword(request):
-    
-    
     return render(request, 'main/printword.html')
 
 
