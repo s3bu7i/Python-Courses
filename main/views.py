@@ -1,42 +1,41 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.urls import reverse
+from django.shortcuts import render 
 
 from .models import Student
 
 # Create your views here.
 
-
 def index(request):
-
+    
+  
+    
     # mesaj = ''
     # if request.method == 'POST':
-
+        
     #     mesaj = request.POST['ad'] + ' '+ request.POST['soyad'] + ' '+ request.POST['email']
-
+        
     mesaj = ''
-
+    
     if request.method == 'POST':
         text = request.POST['hesabla']
         mesaj = len(text.split())
-
-    return render(request, 'main/index.html', {'mesaj': mesaj, })
-
+  
+    return render(request,'main/index.html',{'mesaj':mesaj,})
 
 def calculator(request):
-
+    
     # mesaj = ''
     # if request.method == 'POST':
     #     text = request.POST['cal']
     #     mesaj = eval(text)
-
+    
     mesaj = ''
-
+    
     if request.method == 'POST':
-
+        
         text1 = int(request.POST['cal'])
         text2 = int(request.POST['cal1'])
 
+        
         if '+' in request.POST:
             mesaj = text1 + text2
         if '-' in request.POST:
@@ -45,16 +44,15 @@ def calculator(request):
             mesaj = text1 * text2
         if '/' in request.POST:
             mesaj = text1 / text2
-
-    return render(request, 'main/calculator.html', {'mesaj': mesaj})
-
+        
+    return render(request,'main/calculator.html',{'mesaj':mesaj})
 
 def login(request):
-
+    
     mesaj = ''
-
+    
     if request.method == 'POST':
-
+        
         if request.POST['login'] == 'nasib' and request.POST['parol'] == '12345':
             mesaj = 'Xos geldiniz'
         elif request.POST['login'] == '' and request.POST['parol'] != '':
@@ -69,27 +67,27 @@ def login(request):
             mesaj = 'Login ve parolu daxil edin '
         else:
             mesaj = 'Login ve parol yanlishdir'
-
-    return render(request, 'main/login.html', {'mesaj': mesaj})
-
+            
+    return render(request,'main/login.html',{'mesaj':mesaj})
 
 def about(request):
-
+  
     step = 1
     error = ''
     mesaj = ''
-
+    
     if request.method == 'POST':
-
+    
+        
         if 'step1' in request.POST:
-
-            if request.POST['ad'] == '' or request.POST['soyad'] == '':
+            
+            if   request.POST['ad'] == '' or request.POST['soyad'] == '':
                 step = 1
                 error = 'Xanalari Doldurun'
             else:
                 ad = request.POST['ad']
                 step = 2
-
+                
         elif 'step2' in request.POST:
 
             if request.POST['email'] == '' or request.POST['yash'] == '':
@@ -97,115 +95,119 @@ def about(request):
                 error = 'Xanalari Doldurun'
             else:
                 step = 3
-
+                
         elif 'step3' in request.POST:
 
+            
             if request.POST['maash'] == '' or request.POST['mebleg'] == '':
                 step = 3
                 error = 'Xanalari Doldurun'
             else:
                 mebleg = int(request.POST['mebleg'])
                 maash = int(request.POST['maash'])
-
+                
+                
                 if mebleg < 10:
                     step = 3
-
+                    
                     error = 'Minimum 10 azn daxil ede bilersiniz '
-                elif mebleg > 1000:
+                elif mebleg>1000:
                     step = 3
-
+                    
                     error = 'Maksimum mebleg 1000 AZN olmalidir'
 
                 elif maash < 500 and mebleg > 10 and mebleg < 1000:
-                    mesaj = ' Sizin ' + \
-                        str((mebleg * 50) / 100) + \
-                        ' azn desteyiniz qebul olundu'
+                    mesaj =' Sizin '  + str((mebleg * 50) / 100) +' azn desteyiniz qebul olundu'
                     step = 4
-
-                elif maash > 500 and mebleg > 10 and mebleg < 1000:
-                    mesaj = ' Sizin ' + \
-                        str(ad) + '' + str(mebleg) + \
-                        ' azn desteyiniz qebul olundu'
+                    
+                elif maash > 500 and mebleg > 10 and mebleg < 1000 :
+                    mesaj = ' Sizin '+str(ad)+ ''  + str(mebleg) +' azn desteyiniz qebul olundu'
                     step = 4
-
-    return render(request, 'main/haqqinda.html', {'error': error, 'mesaj': mesaj, 'step': step})
-
+                    
+               
+               
+        
+    return render(request,'main/haqqinda.html',{'error':error,'mesaj':mesaj,'step':step})
 
 def elaqe(request):
-
-    return render(request, 'main/elaqe.html')
-
+    
+    
+    
+    
+    return render(request,'main/elaqe.html')
 
 def radio(request):
     mesaj = ''
-
+    
     text = ''
-
+    
     if request.method == 'POST':
         text = request.POST['s1']
         if 's1' in request.POST:
-
+            
+         
             mesaj = 'Salam '+request.POST['s1']
-
+            
+ 
     context = {
-
+        
         'mesaj': mesaj,
-        'text': text
-
+        'text':text
+        
     }
-
-    return render(request, 'main/radio.html', context)
-
+             
+    return render(request,'main/radio.html',context)
 
 def exam(request):
-
+    
     dogru = 0
     yanlish = 0
     bal = 0
-
+    
     if request.method == 'POST':
-
+    
         if 'cavab1' in request.POST:
-
+            
             if request.POST['cavab1'] == 'a':
-                dogru += 1
-            elif request.POST['cavab1'] != '' and request.POST['cavab1'] != 'a':
-                yanlish += 1
+                dogru +=1
+            elif request.POST['cavab1'] !=  '' and request.POST['cavab1'] != 'a':
+                yanlish +=1
         if 'cavab2' in request.POST:
-
+            
             if request.POST['cavab2'] == 'b':
-                dogru += 1
-            elif request.POST['cavab2'] != '' and request.POST['cavab2'] != 'b':
-                yanlish += 1
-
+                dogru +=1
+            elif request.POST['cavab2'] !=  '' and request.POST['cavab2'] != 'b':
+                yanlish +=1      
+        
         if 'cavab3' in request.POST:
-
+            
             if request.POST['cavab3'] == 'c':
-                dogru += 1
-            elif request.POST['cavab3'] != '' and request.POST['cavab3'] != 'c':
-                yanlish += 1
-
+                dogru +=1
+            elif request.POST['cavab3'] !=  '' and request.POST['cavab3'] != 'c':
+                yanlish +=1       
+                
         if 'cavab4' in request.POST:
-
+            
             if request.POST['cavab4'] == 'd':
-                dogru += 1
-            elif request.POST['cavab4'] != '' and request.POST['cavab4'] != 'd':
-                yanlish += 1
-
+                dogru +=1
+            elif request.POST['cavab4'] !=  '' and request.POST['cavab4'] != 'd':
+                yanlish +=1     
+    
+    
         if 'cavab5' in request.POST:
-
+            
             if request.POST['cavab5'] == 'd':
-                dogru += 1
-            elif request.POST['cavab5'] != '' and request.POST['cavab5'] != 'd':
-                yanlish += 1
-
-        while yanlish == 3:
+                dogru +=1
+            elif request.POST['cavab5'] !=  '' and request.POST['cavab5'] != 'd':
+                yanlish +=1
+                
+        while yanlish  == 3:
             dogru -= 1
             break
-
+        
     bal = dogru * 10
 
-    return render(request, 'main/exam.html', {'dogru': dogru, 'yanlish': yanlish, 'bal': bal})
+    return render(request,'main/exam.html',{'dogru':dogru,'yanlish':yanlish,'bal':bal})
 
 
 def select(request):
@@ -215,72 +217,75 @@ def select(request):
         ad = request.POST['ad']
         if request.POST['ad'] != '':
             mesaj = 'Sizin vezifeniz ' + request.POST['ad']
-
+            
         else:
             mesaj = 'Xahis edirik secim edin '
-
-    return render(request, 'main/select.html', {'mesaj': mesaj, 'ad': ad})
-
+    
+    
+    return render(request,'main/select.html',{'mesaj':mesaj,'ad':ad})
 
 def select_exchange(request):
-
+    
     mesaj = ''
-
-    exchange_az = {'usd': 0.59, 'eur': 0.54}
-
-    exchange_usd = {'azn': 1.7, 'eur': 0.94}
-    exchange_eur = {'azn': 1.81, 'usd': 1.07}
-
+    
+    exchange_az = {'usd': 0.59 ,'eur': 0.54 }
+    
+    exchange_usd = {'azn':1.7,'eur':0.94}
+    exchange_eur = {'azn':1.81,'usd':1.07 }
+    
     if request.method == 'POST':
-
+        
         # AZN TO USD
         if request.POST['al'] == 'azn' and request.POST['sat'] == 'usd':
-
+            
             num = float(request.POST['secim']) * exchange_az['usd']
-            mesaj = str(request.POST['secim']) + ' AZN = ' + str(num) + ' USD'
-
-        # AZN TO EUR
+            mesaj = str(request.POST['secim']) + ' AZN = ' + str(num) +' USD' 
+            
+        # AZN TO EUR    
         elif request.POST['al'] == 'azn' and request.POST['sat'] == 'eur':
             num = float(request.POST['secim']) * exchange_az['eur']
             mesaj = str(request.POST['secim']) + ' AZN = ' + str(num) + 'EUR'
-
+            
+            
         elif request.POST['al'] == 'usd' and request.POST['sat'] == 'azn':
             num = float(request.POST['secim']) * exchange_usd['azn']
-            mesaj = str(request.POST['secim']) + ' USD = ' + str(num) + ' AZN'
-
+            mesaj = str(request.POST['secim']) + ' USD = ' +str(num) + ' AZN'
+            
         elif request.POST['al'] == 'usd' and request.POST['sat'] == 'eur':
             num = float(request.POST['secim']) * exchange_usd['eur']
-            mesaj = str(request.POST['secim']) + ' USD = ' + str(num) + ' EUR '
-
+            mesaj = str(request.POST['secim']) + ' USD = ' +str(num) + ' EUR '
+            
+        
         elif request.POST['al'] == 'eur' and request.POST['sat'] == 'azn':
             num = float(request.POST['secim']) * exchange_eur['azn']
             mesaj = str(request.POST['secim']) + ' EUR = ' + str(num) + ' AZN'
-
+            
         elif request.POST['al'] == 'eur' and request.POST['sat'] == 'usd':
             num = float(request.POST['secim']) * exchange_eur['usd']
             mesaj = str(request.POST['secim']) + ' EUR = ' + str(num) + ' USD'
-
-    return render(request, 'main/select_exchange.html', {'mesaj': mesaj})
-
+    
+    return render(request,'main/select_exchange.html',{'mesaj':mesaj})
 
 def step(request):
-
+    
     mesaj = ''
     addim = 1
     error = ''
-
+    
     if request.method == 'POST':
-
+        
         if 'step1' in request.POST:
-
+            
             if request.POST['ad'] == '' and request.POST['soyad'] == '':
                 addim = 1
                 error = 'Xanalari doldurun'
             else:
-                addim = 2
-
+                addim = 2 
+                
+    
+        
         if 'step2' in request.POST:
-
+            
             if request.POST['email'] == '' and request.POST['yash'] == '':
                 addim = 2
                 error = 'Xanalari doldurun'
@@ -288,15 +293,15 @@ def step(request):
                 addim = 3
 
         if 'step3' in request.POST:
-
+            
             if request.POST['maash'] == '' and request.POST['mebleg'] == '':
                 addim = 3
                 error = 'Xanalari doldurun'
             else:
-
+                
                 mebleg = int(request.POST['mebleg'])
                 maash = int(request.POST['maash'])
-
+                
                 if mebleg < 10:
                     addim = 3
                     error = 'minimum 10 azn daxil ede bilersiniz'
@@ -304,71 +309,21 @@ def step(request):
                 if mebleg > 1000:
                     addim = 3
                     error = 'maksimum 1000 azn daxil ede bilersiniz'
-
+                    
+                    
                 if maash < 500 and mebleg > 10 and mebleg < 1000:
                     addim = 4
-                    mesaj = 'Sizin ' + \
-                        str((mebleg * 50 / 100)) + ' mebleginiz qebul olundu'
+                    mesaj = 'Sizin ' +str((mebleg * 50 / 100)) + ' mebleginiz qebul olundu'
                 if maash > 500 and mebleg > 10 and mebleg < 1000:
                     addim = 4
                     mesaj = 'Sizin ' + str(mebleg) + ' mebleginiz qebul olundu'
+        
+    return render(request,'main/step.html',{'mesaj':mesaj,'addim':addim,'error':error})
 
-    return render(request, 'main/step.html', {'mesaj': mesaj, 'addim': addim, 'error': error})
 
 
 def crud(request):
-
+    
     data = Student.objects.all()[0:1]
-    say = Student.objects.all().count()
-    context = {'data': data, 'say': say}
-
-    return render(request, 'main/crud.html', context)
-
-
-def post(request):
-    if request.method == 'POST':
-        ad = request.POST['ad']
-        soyad = request.POST['soyad']
-
-        student = Student(ad=ad, soyad=soyad)
-        student.save()
-
-    return redirect(reverse('crud'))
-
-
-
-def delete(request,id):
-    student = Student.objects.get(id=id)
-    student.delete()
-    return redirect(reverse('crud'))
-
-def update(request,id):
-    student = Student.objects.get(id=id)
-    student.ad = 'Nasib'
-    student.save()
-    return redirect(reverse('crud'))
-
-
-def edit(request,id):
-    student = Student.objects.get(id=id)
-    context = {'student':student}
-    return render(request,'main/edit.html',context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    return render(request,'main/crud.html',{'data':data})

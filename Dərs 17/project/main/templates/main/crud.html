@@ -1,93 +1,64 @@
-{% extends 'main/layout.html' %}
+{% extends 'main/layout.html' %} {% block content %}
 
-{% block content %}
-
-
-<br><br><br>
-
+<br /><br /><br />
 
 <div class="container">
-
-<table class="table table-hover ">
-
-
+  <table class="table table-hover">
     <thead class="thead-dark">
-
-        <tr>
-
-            <th>N</th>
-            <th>Ad</th>
-            <th>Metn</th>
-            <th>Tarix</th>
-
-
-        </tr>
-
-
+      <tr>
+        <th>N</th>
+        <th>Ad</th>
+        <th>Metn</th>
+      </tr>
     </thead>
 
-
-    
     {% for x in data %}
 
-
     <tbody>
+      <tr>
+        <td>{{ forloop.counter }}</td>
 
+        <td>{{ x.ad }}</td>
+        <td>{{ x.metn }}</td>
+        <td>
+            <a href="{% url 'update' x.id %}" class="btn btn-primary">Update</a>
+            <a href="{% url 'delete' x.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'detail' x.id %}" class="btn btn-success">Detail</a>
+            <a href="{% url 'edit' x.id %}" class="btn btn-primary"></a>
 
-        <tr>
-
-            <td>{{ forloop.counter }}</td>
-
-            <td>{{ x.ad }}</td>
-            <td>{{ x.metn }}</td>
-            <td> {{ x.tarix }}</td>
-
-
-        </tr>
-
-
+        </td>
+      </tr>
     </tbody>
 
-
     {% endfor %}
-
-
-
-
-
-
-</table>
-
-
-
-
+  </table>
 </div>
 
 <div class="container">
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="ad">Ad</label>
-            <input type="text" class="form-control" name="ad" id="ad" placeholder="Ad">
-        </div>
-        <div class="form-group">
-            <label for="metn">Metn</label>
-            <input type="text" class="form-control" name="metn" id="metn" placeholder="Metn">
-        </div>
-        <button type="submit">
-            
-        </button>
-
-    </form>
-
-
-
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="ad">Ad</label>
+      <input
+        type="text"
+        class="form-control"
+        name="ad"
+        id="ad"
+        placeholder="Ad"
+      />
+    </div>
+    <div class="form-group">
+      <label for="metn">Metn</label>
+      <input
+        type="text"
+        class="form-control"
+        name="metn"
+        id="metn"
+        placeholder="Metn"
+      />
+    </div>
+    <button type="submit"></button>
+  </form>
 </div>
-
-
-
-
-
-
 
 {% endblock %}

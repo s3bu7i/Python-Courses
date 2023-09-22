@@ -1,0 +1,72 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+
+<br><br><br>
+
+
+<div class="container">
+
+<table class="table table-hover ">
+
+
+    <thead class="thead-dark">
+
+        <tr>
+
+            <th>N</th>
+            <th>Ad</th>
+            <th>Metn</th>
+            <th>Tarix</th>
+
+
+        </tr>
+
+
+    </thead>
+
+
+    
+    {% for x in data %}
+
+
+    <tbody>
+
+
+        <tr>
+
+            <td>{{ forloop.counter }}</td>
+
+            <td>{{ x.ad }}</td>
+            <td>{{ x.metn }}</td>
+            <td> {{ x.tarix }}</td>
+
+
+        </tr>
+
+
+    </tbody>
+
+
+    {% endfor %}
+
+
+
+
+
+
+</table>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

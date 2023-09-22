@@ -16,10 +16,6 @@ urlpatterns = [
     path('select_exchange/',views.select_exchange,name='select_exchange'),
     path('army/',views.step,name='step'),
     path('crud/',views.crud,name='crud'),
-    path('post/',views.post,name='post'),
-    path('delete/<int:id>',views.delete,name='delete'),
-    path('update/<int:id>',views.update,name='update'),
-    path('edit/<int:id>',views.edit,name='edit'),
  
 
     

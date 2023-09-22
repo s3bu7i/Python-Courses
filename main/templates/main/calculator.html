@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br>
+
+    <!-- <form  action="" method="post">
+        {% csrf_token %}
+
+        <input type="text" name="cal">
+        <button type="submit">=</button>
+        
+        
+    </form>
+    {{mesaj}} -->
+
+    <form action="" method="post">
+        {% csrf_token %}
+    
+        <input type="text" name="cal">
+        <input type="text" name="cal1">
+    
+        <button type="submit" name="+">+</button>
+        <button type="submit" name="-">-</button>
+        <button type="submit" name="*">*</button>
+        <button type="submit" name="/">/</button>
+        ={{mesaj}}
+    
+    
+    </form>
+    
+</body>
+</html>
