@@ -1,0 +1,77 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+ 
+    <h3> Bura haqqinda sehifesidir </h3>
+
+    {% if step == 1 %}
+
+    <form action="" method="post">
+      {% csrf_token %}
+      <label for="ad">Ad</label>
+      <br>
+      <input type="text" name="ad">
+      <br>
+      <label for="soyad">Soyad</label>
+      <br>
+      <input type="text" name="soyad">
+      <br><br>
+      <button type="submit" name="step1">Enter</button>
+
+    </form>
+
+    {% endif %}
+
+    {% if step == 2 %}
+
+
+    <form action="" method="post">
+      {% csrf_token %}
+
+      <label for="">Email</label>
+      <br>
+      <input type="text" name="email">
+      <br>
+      <label for="">Yash</label>
+      <br>
+      <input type="text" name="yash">
+      <br><br>
+      <button type="submit" name="step2">Enter</button>
+
+    </form>
+
+    {% endif %}
+
+
+    {% if step == 3 %}
+
+
+    <form action="" method="post">
+      {% csrf_token %}
+
+      <label for="">Maash</label>
+      <br>
+      <input type="text" name="maash">
+      <br>
+      <label for="">Mebleg</label>
+      <br>
+      <input type="text" name="mebleg">
+      <br><br>
+      <button type="submit"  name="step3">Enter</button>
+
+    </form>
+
+    {% endif %}
+
+
+    {{error}}
+    {% if step == 4 %}
+    {{ad}}
+      {{mesaj}}
+
+    {% endif %}
+
+
+
+ 
+{% endblock %}

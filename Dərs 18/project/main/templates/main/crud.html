@@ -1,0 +1,150 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+
+<br><br><br>
+
+
+<div class="container">
+
+    {% if edit %}
+  
+    <form action="" method="post">
+        {% csrf_token %}
+
+        Ad:
+        <input type="text" name="ad" class="form-control" placeholder="Ad" required="" value="{{ edit.ad }}" >
+        <br>
+        Soyad:
+        <input type="text" name="metn" class="form-control" placeholder="Metn" required="" value="{{ edit.metn }}">
+        <br><br> 
+        <button type="submit" class="btn btn-warning btn-sm">Yenile</button>
+
+
+    </form>
+
+    {% else %}
+
+
+    <form action="{% url 'crud' %}" method="post">
+
+        {% csrf_token %}
+        Ad:
+        <input type="text" name="ad" class="form-control" placeholder="Ad" required="" >
+        <br>
+        Soyad:
+        <input type="text" name="metn" class="form-control" placeholder="Metn" required="" >
+        <br><br> 
+        <button type="submit" class="btn btn-primary btn-sm">Daxil et</button>
+
+    </form>
+
+
+    {% endif %}
+
+<br><br>
+ 
+
+
+
+<div class="alert alert-info">Bazada {{ say }} melumat var</div>
+
+
+
+<table class="table table-hover ">
+
+
+    <thead class="thead-dark">
+
+        <tr>
+            
+             
+           
+            <th>N</th>
+          
+            <th>Ad</th>
+            <th>Metn</th>
+            <th>
+
+              
+
+            </th>
+          
+         
+
+
+        </tr>
+
+       
+
+
+    </thead>
+
+
+    
+    {% for x in data %}
+
+
+    <tbody>
+
+
+        <tr>
+           
+          
+            <td>{{ forloop.counter }}</td>
+
+         
+            <td>{{ x.ad }}</td>
+            <td>{{ x.metn }}</td>
+            <td>
+
+                <a class="btn btn-danger btn-sm" href="{% url 'delete' x.id %}"> <i class="bi bi-trash"> </i> </a>
+
+                <a class="btn btn-success btn-sm" href="{% url 'edit' x.id  %}"> <i class="bi bi-pencil"></i> </a>
+
+
+            </td>
+          
+
+
+        </tr>
+
+
+    </tbody>
+
+
+    {% endfor %}
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+</div>
+
+
+<!-- <script type="text/javascript">  
+    function toggle(source) {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i] != source)
+                checkboxes[i].checked = source.checked;
+        }
+    }
+      
+</script>   -->
+
+
+
+
+
+{% endblock %}
