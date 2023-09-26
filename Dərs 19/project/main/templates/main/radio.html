@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<br><br>
+
+<form action="" method="post">
+    {% csrf_token%}
+    Kishi:
+    <input {% if text == 'kishi' %}  checked {% endif %} type="radio" name="s1" value="kishi">
+    <br>
+    Qadin:
+    <input {% if text == 'qadin' %}  checked {% endif %} type="radio" name="s1" value="qadin">
+
+    <button type="submit">Daxil et</button>
+
+</form>
+
+    {{mesaj}}
+
+   
+
+{% endblock %}
