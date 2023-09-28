@@ -3,10 +3,10 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return HttpResponse('Hello World!')
+    return render(request, 'blog/index.html')
 
 def blogs(request):
-    return HttpResponse('Blogs')
+    return render(request, 'blog/blogs.html')
 
 def blog_details(request, id):
     return HttpResponse('Blog Details: ' + str(id))
