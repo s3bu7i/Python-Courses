@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<br><br><br>
+
+    <form action="" method="post">
+
+        {% csrf_token %}
+
+        <select name="al" >
+
+            <option value="">Secim Edin</option>
+
+            <option value="azn">Azn</option>
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+
+        </select>
+
+       &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <select name="sat" >
+
+
+            <option value="">Secim Edin</option>
+
+            <option value="azn">Azn</option>
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+
+
+        </select>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <input type="text" name="secim" size="8">
+
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <button type="submit">Exchange</button>
+        
+    </form>
+
+    {{mesaj}}
+
+
+
+
+{% endblock %}

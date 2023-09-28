@@ -1,0 +1,101 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+
+<br><br><br>
+
+
+
+
+
+
+
+
+<div class="container">
+<br><br>
+
+    <form action="{% url 'telefon' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        <input type="file" name="foto">
+        <br><br>
+        <button type="submit">Enter</button>
+    
+    </form>
+    
+
+<br><br>
+<div class="alert alert-info">Bazada {{ say }} melumat var</div>
+
+
+
+
+<table class="table table-hover ">
+
+
+    <thead class="thead-dark">
+
+        <tr>
+            
+ 
+            <th>N</th>
+          
+            <th>Model</th>
+            <th>Ram</th>
+        
+            <th></th>
+
+
+        </tr>
+
+    </thead>
+
+    
+    {% for x in data   %}
+
+    <tbody>
+
+
+        <tr>
+           
+          
+            <td>{{ forloop.counter }}</td>
+
+            <td>{{ x.model}}</td>
+
+            <td>{{ x.ram }}</td>
+           
+            <td>
+
+                <a  class ="btn btn-primary btn-md" href="{% url 'etrafli' x.id %}"><i class="bi bi-eye-fill"></i></a>
+
+            </td>
+   
+
+        </tr>
+
+    </tbody>
+
+
+    {% endfor %}
+
+
+</table>
+
+</form>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}
