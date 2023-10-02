@@ -1,0 +1,35 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<br><br>
+
+
+
+    
+    {% for x in data %}
+
+
+    <a href="{% url 'etrafli' x.id %}"> {{x.model}}</a>
+
+   
+
+
+
+    {{x.ram}}
+    {{x.nuve_sayi}}
+    {{x.dioqonal}}
+    {{x.prosessor}}
+
+    <a href="{% url 'etrafli' x.id %}"><img src="{{ x.img }}" style="height: 180px ; width: 200px ;"></a>
+
+
+        
+    {% endfor %}
+        
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+
+<br><br><br>
+
+
+<div class="container">
+
+    {% if edit %}
+  
+    <form action="{% url 'update' edit.id %}" method="post">
+        {% csrf_token %}
+
+        Ad:
+        <input type="text" name="ad" class="form-control" placeholder="Ad" required="" value="{{ edit.ad }}" >
+        <br>
+        Soyad:
+        <input type="text" name="metn" class="form-control" placeholder="Metn" required="" value="{{ edit.metn }}">
+        <br><br> 
+        <button type="submit" class="btn btn-warning btn-sm">Yenile</button>
+
+
+    </form>
+
+    {% else %}
+
+
+    <form action="{% url 'crud' %}" method="post">
+
+        {% csrf_token %}
+        Ad:
+        {{ student.ad }}
+        <br>
+        Soyad:
+        {{ student.metn }}
+
+        <br><br> 
+        <button type="submit" class="btn btn-primary btn-sm">Daxil et</button>
+
+    </form>
+
+
+    {% endif %}
+
+<br><br>
+
+
+ 
+{% if tesdiq %}
+
+
+<h4>Silmek istediyinzden eminsinizmi ?</h4>
+
+<a class="btn btn-success btn-sm" href="{% url 'delete' tesdiq.id %}">Beli</a>
+<a class="btn btn-primary btn-sm" href="{% url 'crud' %}">Xeyr</a>
+
+
+
+
+{% endif %}
+
+
+ 
+
+
+{% if messages %}
+
+    {% for message in messages %}
+
+    <div class="alert alert-success">  {{message}} </div>   
+
+    {% endfor %}
+
+
+{% endif %}
+
+
+<div class="alert alert-info">Bazada {{ say }} melumat var</div>
+
+
+
+
+{% comment %}
+<form action="{% url 'delete' %}" method="post">
+{% csrf_token %}
+
+{% endcomment %}
+
+
+<table class="table table-hover ">
+
+
+    <thead class="thead-dark">
+
+        <tr>
+            
+ 
+            <th>N</th>
+            <th>
+                <input type="checkbox" onclick="toggle(this)">
+            </th>
+            <th>Ad</th>
+            <th>Metn</th>
+            <th>Tarix</th>
+            <th></th>
+           
+            <th>
+
+            
+
+            </th>
+           
+          
+
+        </tr>
+
+    </thead>
+
+    
+    {% for x in data reversed  %}
+
+    <tbody>
+
+
+        <tr>
+           
+          
+            <td>{{ forloop.counter }}</td>
+
+            <td>
+
+                <input type="checkbox" value="{{x.id}}" name="x[]">
+
+            </td>
+         
+            <td>{{ x.ad | safe }}</td>
+            <td>{{ x.metn }}</td>
+            <td>{{ x.tarix }}</td>
+            <td>
+
+              
+                <a class="btn btn-success btn-sm" href="{% url 'edit' x.id  %}"> <i class="bi bi-pencil"></i> </a>
+                <a class="btn btn-danger btn-sm" href="{% url 'tesdiq' x.id %}"><i class="bi bi-trash"></i></a>
+
+            </td>
+   
+
+        </tr>
+
+    </tbody>
+
+
+    {% endfor %}
+
+
+</table>
+
+</form>
+
+
+
+
+
+
+
+
+</div>
+
+
+<script type="text/javascript">  
+
+    function toggle(source) {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i] != source)
+                checkboxes[i].checked = source.checked;
+        }
+    }
+      
+</script>  
+
+\
+
+
+{% endblock %}

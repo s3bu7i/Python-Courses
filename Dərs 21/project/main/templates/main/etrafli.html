@@ -1,0 +1,51 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+<br><br>
+
+
+{% comment %}
+
+
+    {{ x.model }}
+    <br>
+    {{ x.ram }}
+    <br>
+    {{ x.dioqonal }}
+    <br>
+    {{ x.prosessor }}
+    <br>
+    {{ x.nuve_sayi }}
+    <br>
+    <img src="{{ x.img.url }}" >
+
+{% endcomment %}
+
+   
+
+
+{% for i in telefon %}
+
+
+
+    {{ i.model }}
+    <br>
+    {{ i.ram }}
+    <br>
+    {{ i.dioqonal }}
+    <br>
+    {{ i.prosessor }}
+    <br>
+    {{ i.nuve_sayi }}
+    <br>
+    <img src="{{ i.img.url }}" >
+
+    
+{% endfor %}
+    
+    
+
+
+
+
+{% endblock %}

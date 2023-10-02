@@ -1,0 +1,37 @@
+
+
+
+
+<form action="{% url 'item' %}" method="post">
+    {% csrf_token %}
+    <select name="br" >
+
+        <option value="">Secim Edin</option>
+        
+        {% for i in item %}
+
+        <option value="{{ i.id }}">{{ i.ad }}</option>
+
+            
+        {% endfor %}
+            
+
+
+    </select>
+
+    <button>Enter</button>
+
+
+</form>
+
+
+
+{% for x in  shop %}
+
+
+{{ x.br.ad}} 
+
+<img src="{{ x.br.img.url}}" alt="" style="height: 100px ; width: 120px;">
+    
+{% endfor %}
+    

@@ -1,0 +1,91 @@
+{% extends 'main/layout.html' %}
+
+
+{% block content %}
+
+<br><br><br>
+
+
+
+{% if addim == 1 %}
+    
+
+
+<form action="" method="post">
+
+   {% csrf_token %}
+
+    Ad:
+   <input type="text" name="ad">
+   <br>
+   Soyad:
+   <input type="text" name="soyad">
+    <br><br>
+    <button type="submit" name="step1">Daxil et</button>
+
+
+</form>
+
+{% endif %}
+    
+
+
+{% if addim == 2 %}
+    
+
+    
+<form action="" method="post">
+
+    {% csrf_token %}
+ 
+    Email:
+    <input type="text" name="email">
+    <br>
+    Yash:
+    <input type="text" name="yash">
+    <br><br>
+     <button type="submit" name="step2">Daxil et</button>
+ 
+ 
+ </form>
+
+ {% endif %}
+
+ 
+
+ 
+ {% if addim == 3 %}
+    
+ 
+    
+ <form action="" method="post">
+
+    {% csrf_token %}
+ 
+    Mebleg:
+    <input type="text" name="mebleg">
+    <br>
+    Maash:
+    <input type="text" name="maash">
+    <br><br>
+     <button type="submit" name="step3">Daxil et</button>
+ 
+ 
+ </form>
+ 
+
+ {% endif %}
+
+{{error}}
+ 
+ {% if addim == 4 %}
+
+    {{mesaj}}
+
+    
+ {% endif %}
+    
+
+
+
+{% endblock %}

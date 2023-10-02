@@ -1,0 +1,82 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<br><br><br>
+
+
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    1.Idil bulqarlarının varlığına kimlər son qoydu? <br>
+    <input type="radio" name="cavab1" value="a"> A) <br>
+    <input type="radio" name="cavab1" value="b"> B) <br>
+    <input type="radio" name="cavab1" value="c"> C)   <br>
+    <input type="radio" name="cavab1" value="d"> D)    <br>
+
+    2.Gürcüstanda iri feodallar adlanırdı? <br>
+    <input type="radio" name="cavab2" value="a"> A) <br>
+    <input type="radio" name="cavab2" value="b"> B) <br>
+    <input type="radio" name="cavab2" value="c"> C) <br>
+    <input type="radio" name="cavab2" value="d"> D) <br>
+
+    3.Gürcüstanda xırda feodallar adlanırdı:? <br>
+    <input type="radio" name="cavab3" value="a"> A) <br>
+    <input type="radio" name="cavab3" value="b"> B) <br>
+    <input type="radio" name="cavab3" value="c"> C) <br>
+    <input type="radio" name="cavab3" value="d"> D) <br>
+
+    4.Nvarsak müqaviləsi üçün səciyyəvidir? <br>
+    <input type="radio" name="cavab4" value="a"> A) <br>
+    <input type="radio" name="cavab4" value="b"> B) <br>
+    <input type="radio" name="cavab4" value="c"> C) <br>
+    <input type="radio" name="cavab4" value="d"> D) <br>
+
+    5.226-ci ildə Ktesifonda təntənəli şəkildə şahlar şahı titulunu qəbul etdi:? <br>
+    <input type="radio" name="cavab5" value="a"> A) <br>
+    <input type="radio" name="cavab5" value="b"> B) <br>
+    <input type="radio" name="cavab5" value="c"> C) <br>
+    <input type="radio" name="cavab5" value="d"> D) <br>
+
+    6.Sasani dövlətində Şahdan sonra dövlətin ikinci rəsmi şəxsi adlanırdı:? <br>
+    <input type="radio" name="cavab6" value="a"> A) <br>
+    <input type="radio" name="cavab6" value="b"> B) <br>
+    <input type="radio" name="cavab6" value="c"> C) <br>
+    <input type="radio" name="cavab6" value="d"> D) <br>
+
+    7.İranda iri feodallar adlanırdı:? <br>
+    <input type="radio" name="cavab7" value="a"> A) <br>
+    <input type="radio" name="cavab7" value="b"> B) <br>
+    <input type="radio" name="cavab7" value="c"> C) <br>
+    <input type="radio" name="cavab7" value="d"> D) <br>
+
+    8.İranda xırda və orta feodallar adlanırdı:? <br>
+    <input type="radio" name="cavab8" value="a"> A) <br>
+    <input type="radio" name="cavab8" value="b"> B) <br>
+    <input type="radio" name="cavab8" value="c"> C) <br>
+    <input type="radio" name="cavab8" value="d"> D) <br>
+
+    9.“Avesta”- nın salamat qalan hissələri yığaraq bərpa edildi:? <br>
+    <input type="radio" name="cavab9" value="a"> A) <br>
+    <input type="radio" name="cavab9" value="b"> B) <br>
+    <input type="radio" name="cavab9" value="c"> C) <br>
+    <input type="radio" name="cavab9" value="d"> D) <br>
+
+    10.Mani təlimi yayılırdı:? <br>
+    <input type="radio" name="cavab10" value="a"> A) <br>
+    <input type="radio" name="cavab10" value="b"> B) <br>
+    <input type="radio" name="cavab10" value="c"> C) <br>
+    <input type="radio" name="cavab10" value="d"> D) <br>
+
+    <br><br>
+    <button type="submit">Bitir</button>
+
+</form>
+
+<h5>Dogru Cavab: {{dogru}} Yanlish Cavab : {{yanlish}} Baliniz :{{bal}}</h5>
+
+
+
+
+{% endblock %}
