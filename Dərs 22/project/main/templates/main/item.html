@@ -1,0 +1,93 @@
+{% extends 'main/layout.html' %}
+
+{% block title %} Item {% endblock title %}
+
+{% block content %}
+
+<div class="container">
+
+
+
+
+
+
+
+
+<form action="{% url 'item' %}" method="post">
+    {% csrf_token %}
+
+    <select name="item" >
+
+        <option value="" disabled selected>Secim Edin</option>
+
+        {% for x in category %}
+
+
+            <option value="{{ x.id }}">{{ x.ad}}</option>
+
+        {% endfor %}
+
+    </select>
+
+
+
+    <button>Daxil et</button>
+</form>
+
+
+
+
+<table class="table table-responsive">
+
+
+    <thead>
+
+      <tr>
+
+        <th >#</th>
+        <th >Ad</th>
+        <th>Alish</th>
+        <th>Satish</th>
+        <th>Miqdar</th>
+        <th>Qazanc</th>
+      
+      </tr>
+
+    </thead>
+
+
+    
+    {% for x in item  %}
+        
+   
+        
+
+    <tbody>
+     
+      <tr>
+
+        <td>{{ forloop.counter}}</td>
+        <td>{{ x.cat_id.ad}}</td>
+        <td>{{ x.al}}</td>
+        <td>{{ x.sat}}</td>
+        <td>{{ x.miqdar}}</td>
+        <td>{{ x.cem }}</td>
+
+      </tr>
+
+
+    </tbody>
+
+    {% endfor %}
+
+  </table>
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<br><br><br>
+
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <select name="ad" >
+
+
+        <option value="">Secim Edin</option>
+
+        <option {% if ad == 'vekil' %} selected {% endif %} value="vekil">Vekil</option>
+        <option {% if ad == 'hekim' %} selected {% endif %} value="hekim">Hekim</option>
+        <option {% if ad == 'polis' %} selected {% endif %} value="polis">Polis</option>
+
+
+       
+
+    </select>
+
+
+    <button type="submit">Enter</button>
+
+
+</form>
+<br>
+
+        {{mesaj}}
+
+
+
+{% endblock %}
