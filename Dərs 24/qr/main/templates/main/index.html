@@ -1,0 +1,131 @@
+{% extends 'main/layout.html' %}
+
+
+
+{% load static %}
+
+
+
+
+{% block blockname %}
+  
+
+
+{% comment %}
+  
+
+  
+
+{% if user.is_authenticated %}
+  
+
+{% endcomment %}
+
+  
+
+
+    <!-- slider section -->
+
+    <section class="slider_section">
+      <div class="slider_container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+         
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 px-0">
+                    <div class="img-box">
+                      <img src="{% static 'images/slider-img.jpg' %}" alt="" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-box">
+
+
+                    <form action="{% url 'index' %}" method="post">
+
+                      {% csrf_token %}
+
+                      <label for="">Link</label>
+                      <br>
+                      <input type="text" name="qr">
+                      <br><br>
+                      <button class="btn btn-primary btn-sm" type="submit">Enter</button>
+
+
+                    </form>
+                    
+                    <br>
+
+                    
+                    {% if  data != '' %}
+
+                      <img src="{% static 'images/test.png' %}" alt="">
+                      <br>
+                      <a class="btn btn-success btn-md" href="{% static 'images/test.png' %}" download>Download</a>
+
+                    {% endif %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        
+        </div>
+      </div>
+    </section>
+
+    <!-- end slider section -->
+  </div>
+  <!-- end hero area -->
+
+  
+
+
+
+ 
+
+  <!-- agency section -->
+
+  <section class="agency_section layout_padding-bottom">
+    <div class="agency_container ">
+      <div class="box ">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              About <span>Design</span> Agency
+            </h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          </p>
+          <a href="">
+            Read More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end agency section -->
+
+
+
+  
+  {% comment %}
+    
+  
+    
+
+  {% else %}
+
+  <meta http-equiv="refresh" content="0;URL='{% url 'login' %}'" /> 
+
+  {% endif %}
+
+  {% endcomment %}
+{% endblock blockname %}
