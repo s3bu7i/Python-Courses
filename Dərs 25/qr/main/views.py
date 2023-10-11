@@ -149,9 +149,6 @@ def block(request,id):
    userid.is_active = 0
    userid.save()
    
-   
-   
-   
    return redirect(reverse('settings'))
     
     
