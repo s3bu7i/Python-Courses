@@ -8,6 +8,7 @@ class CustomUser(AbstractUser):
 class CostumUser(AbstractUser):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     is_blocked = models.BooleanField(default=False)
-    
+
+
     
     
