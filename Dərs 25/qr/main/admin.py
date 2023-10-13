@@ -15,5 +15,3 @@ def activate_users(modeladmin, request, queryset):
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = ('username', 'email', 'is_active')
     actions = [block_users, activate_users]
-
-admin.site.register(CustomUser, CustomUserAdmin)
