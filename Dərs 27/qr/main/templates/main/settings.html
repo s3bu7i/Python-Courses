@@ -1,0 +1,192 @@
+{% extends 'main/layout.html' %}
+
+{% block blockname %}
+
+
+<br><br><br>
+
+
+<div class="container">
+
+
+    <center>
+
+        <div class="card">
+
+            <div class="card-body">
+
+
+                {% if userid %}
+
+
+
+
+                <form action="{% url 'updateprofile' userid.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="text-center">
+                        Username:
+                        <br>
+                        <input type="text" name="username" placeholder="Username" class="form-control"
+                            value="{{ userid.username}}">
+                        <br>
+                        First_name:
+                        <br>
+                        <input type="text" name="first_name" placeholder="First_name" class="form-control"
+                            value="{{ userid.first_name}}">
+                        <br>
+                        Last_Name:
+                        <br>
+                        <input type="text" name="last_name" placeholder="Last_Name" class="form-control"
+                            value="{{ userid.last_name}}">
+                        <br>
+                        Email:
+                        <br>
+                        <input type="email" name="email" placeholder="Email" class="form-control"
+                            value="{{ userid.email}}">
+                        <br>
+                        Foto:
+                        <br>
+                        <input type="file" name="foto">
+                        <br>
+                        Current Password: <span>*</span>
+                        <br>
+                        <input type="text" name="password" placeholder="Password" class="form-control">
+                        <br>
+                        New Password:
+                        <br>
+                        <input type="text" name="re_pass1" placeholder="New Password" class="form-control">
+                        <br>
+                        Confirm Password:
+                        <br>
+                        <input type="text" name="re_pass2" placeholder="Confirm Password" class="form-control">
+                        <br><br>
+                        <button class="btn btn-primary btn-sm " type="submit">Yenile</button>
+
+                        <br>
+                        {% if messages %}
+
+
+
+                        {% for x in messages %}
+
+
+                        {{x}}
+
+                        {% endfor %}
+
+
+
+                        {% endif %}
+
+
+                    </div>
+
+
+
+
+                </form>
+
+                {% endif %}
+
+            </div>
+
+
+        </div>
+
+
+    </center>
+
+
+
+<style>
+    .text-center {
+
+        width: 500px;
+
+
+
+    }
+
+
+    .text-center span {
+
+        color: red;
+
+
+    }
+
+    .card-body {
+
+        background-color: rgb(236, 231, 224);
+    }
+</style>
+
+
+<br>
+
+
+{% if request.user.is_superuser == 1 %}
+
+
+
+<table class="table" id="goster">
+
+    <thead class="thead-dark">
+
+        <tr>
+
+
+            <th>User</th>
+            <th></th>
+
+        </tr>
+
+    </thead>
+
+
+    {% for x in user_id %}
+
+        <tbody>
+
+
+            <tr>
+
+                <td>{{x.username}}</td>
+                <td>
+
+                    
+                    {% if x.is_active == 1 %}
+
+                        <a class="btn btn-success btn-sm" href="{% url 'block' x.id %}#goster"><i class="bi bi-toggle-on"></i></a>
+
+                    
+                    {% else %}
+
+                        <a class="btn btn-warning btn-sm" href="{% url 'active' x.id %}#goster"><i class="bi bi-toggle-off"></i></a>
+
+
+                    {% endif %}
+                        
+
+
+                </td>
+
+
+            </tr>
+
+        </tbody>
+
+    {% endfor %}
+
+
+</table>
+
+
+{% endif %}
+
+</div>
+
+
+<br><br><br>
+{% endblock blockname %}

@@ -1,0 +1,266 @@
+@media (max-width: 1120px) {
+    .agency_section .agency_container .box {
+        width: 70%;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar-brand {
+        margin-bottom: 0;
+    }
+
+    .custom_nav-container {
+        flex-direction: row;
+    }
+
+    #navbarSupportedContent {
+        margin-top: 25px;
+    }
+
+    .custom_nav-container .nav_search-btn {
+        background-position: center;
+    }
+
+    .custom_nav-container.navbar-expand-lg .navbar-nav .nav-item .nav-link {
+        margin: 7px 15px;
+    }
+
+    .slider_section .detail-box {
+        width: 100%;
+        margin: 45px 0;
+    }
+
+    .slider_section .carousel-indicators li {
+        font-size: 3.5rem;
+    }
+
+    .agency_section .agency_container .box {
+        width: 85%;
+        padding: 90px 55px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero_area {
+        height: auto;
+    }
+
+    .slider_section {
+        padding: 0 25px;
+    }
+
+    .slider_section .slider_container {
+        padding: 20px;
+    }
+
+    .slider_section .carousel-indicators {
+        right: -40px;
+    }
+
+    .slider_section .detail-box {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .slider_section .carousel_btn-box {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .slider_section .detail-box a {
+        margin-bottom: 35px;
+    }
+
+    .portfolio_section .portfolio_container .box-1,
+    .portfolio_section .portfolio_container .box-2 {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .started_section .heading_container {
+
+        text-align: center;
+        align-items: center;
+    }
+
+    .started_section .btn-box {
+        justify-content: center;
+        margin-top: 25px;
+    }
+
+    .agency_section .agency_container {
+        padding: 75px 45px;
+    }
+
+    .agency_section .agency_container .box {
+        width: 100%;
+        padding: 75px 25px;
+    }
+
+    .client_section .box {
+        width: 100%;
+    }
+
+    .info_section .row>div {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .logo_container.layout_padding {
+
+        padding: 45px 0;
+
+    }
+}
+
+@media (max-width: 576px) {
+    .slider_section .carousel-indicators {
+        display: none;
+    }
+
+    .portfolio_section .portfolio_container {
+        margin: 45px 25px 0;
+    }
+
+    .agency_section .agency_container {
+        margin: 45px 0;
+        padding: 45px 15px;
+    }
+
+    .logo_section .logo_container {
+        margin: 55px 25px 0;
+    }
+
+    .info_section {
+        margin: 0 25px 25px;
+    }
+
+    .logo_container.layout_padding {
+
+        padding: 25px 0;
+
+    }
+
+}
+
+@media (max-width: 480px) {
+    .slider_section .detail-box h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 420px) {}
+
+@media (max-width: 376px) {
+    .slider_section .detail-box h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1170px;
+    }
+}
+
+
+
+/*  */
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:568px){
+
+
+
+    .dropdown-toggle{
+
+        height: 80px;
+        width: 85px;
+        cursor: pointer;
+
+
+
+    }
+
+
+
+
+    #hd{
+
+
+        display: none;
+
+    }
+
+
+}
+
+
+@media (min-width:1200px){
+
+
+
+    .dropdown-toggle{
+
+        height: 100px;
+        width: 105px;
+        cursor: pointer;
+
+
+
+    }
+
+    #gizle{
+
+        display: none;
+
+
+    }
+
+
+    
+  
+
+}
+
+
+@media (max-width:1200px){
+
+    
+
+    .text-center {
+
+        width: 500px;
+
+
+
+    }
+
+
+    .text-center span {
+
+        color: red;
+
+
+    }
+
+    .card-body {
+
+        background-color: rgb(236, 231, 224);
+    }
+
+
+}

@@ -1,0 +1,61 @@
+{% extends 'main/layout.html' %}
+
+
+
+{% load static %}
+
+
+{% block blockname %}
+
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding-bottom layout_padding2-top">
+    <div class="container px-0">
+      <div class="heading_container">
+        <h2 class="">
+          Con<span>ta</span>ct Us
+        </h2>
+      </div>
+
+    </div>
+    <div class="container container-bg">
+      <div class="row">
+        <div class="col-lg-8 col-md-7 px-0">
+          <div class="map_container">
+            <div class="map-responsive">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5112.034029011636!2d49.804906563262776!3d40.37264753736649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d67369e1261%3A0x67e00a06a87eb9d4!2zUcmZZGltIFHJmWLJmWzJmQ!5e0!3m2!1sen!2saz!4v1697200624551!5m2!1sen!2saz"  width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen ></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-lg-4 px-0">
+
+          <form action="{% url 'send__mail' %}" method="post">
+            {% csrf_token %}
+
+            <div>
+              <input type="text" placeholder="Text" name="text" />
+            </div>
+            <div>
+              <input type="email" placeholder="Email" name="email"/>
+            </div>
+            <div>
+              <input type="text" placeholder="Subject" name="subject"/>
+            </div>
+            
+            <div class="d-flex ">
+              <button>
+                SEND
+              </button>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
+
+ {% endblock blockname %}
