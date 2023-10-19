@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dino's To-Do List</title>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
+    <h1>Dino's To-Do List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Deadline</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in object_list %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.priority }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.deadline }}</td>
+                <td>
+                    <a href="{% url 'edit_task' task.pk %}">Edit</a>
+                    <a href="{% url 'delete_task' task.pk %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button id="add-task-btn">Add New Task</button>
+    <div id="add-task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form method="post" action="{% url 'create_task' %}">
+                {% csrf_token %}
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+                <label for="priority">Priority:</label>
+                <select id="priority" name="priority" required>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+                <label for="status">Status:</label>
+                <select id="status" name="status" required>
+                    <option value="To Do">To Do</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Done">Done</option>
+                </select>
+                <label for="deadline">Deadline:</label>
+                <input type="datetime-local" id="deadline" name="deadline" required>
+                <button type="submit">Create New Task</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'myapp/script.js' %}"></script>
+</body>
+</html>
