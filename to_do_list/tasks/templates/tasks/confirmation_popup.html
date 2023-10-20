@@ -1,0 +1,90 @@
+
+{% block confirmation_popup %}
+<script>
+function showConfirmationPopup(event) {
+    event.preventDefault(); 
+
+    const confirmationMessage = 'Are you sure you want to delete this task?';
+    const confirmationPopup = document.createElement('div');
+    confirmationPopup.className = 'confirmation-popup';
+
+    const messageElement = document.createElement('div');
+    messageElement.textContent = confirmationMessage;
+    confirmationPopup.appendChild(messageElement);
+
+    const okButton = document.createElement('button');
+    okButton.textContent = 'OK';
+    okButton.className = 'btn btn-success btn-sm me-2';
+    okButton.onclick = function () {
+        
+        window.location.href = event.target.href;
+    };
+    confirmationPopup.appendChild(okButton);
+
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.className = 'btn btn-danger btn-sm';
+    cancelButton.onclick = function () {
+        
+        confirmationPopup.remove();
+    };
+    confirmationPopup.appendChild(cancelButton);
+
+    
+    const x = event.clientX;
+    const y = event.clientY - 100; 
+    confirmationPopup.style.position = 'fixed';
+    confirmationPopup.style.top = y + 'px';
+    confirmationPopup.style.left = x + 'px';
+
+    // Add the confirmation popup to the document
+    document.body.appendChild(confirmationPopup);
+
+    
+    return false;
+}
+
+
+function showResetConfirmationPopup(event) {
+    
+    const confirmationMessage = 'Are you sure you want to delete all tasks? This action cannot be undone!';
+    const confirmationPopup = document.createElement('div');
+    confirmationPopup.className = 'confirmation-popup confirmation-popup-red';
+
+    const messageElement = document.createElement('div');
+    messageElement.textContent = confirmationMessage;
+    confirmationPopup.appendChild(messageElement);
+
+    const okButton = document.createElement('button');
+    okButton.textContent = 'OK';
+    okButton.className = 'btn btn-success btn-sm me-2';
+    okButton.onclick = function () {
+        
+        event.target.form.submit(); 
+    };
+    confirmationPopup.appendChild(okButton);
+
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.className = 'btn btn-danger btn-sm';
+    cancelButton.onclick = function () {
+        
+        confirmationPopup.remove();
+    };
+    confirmationPopup.appendChild(cancelButton);
+
+    
+    const x = event.clientX;
+    const y = event.clientY - 100; 
+    confirmationPopup.style.position = 'fixed';
+    confirmationPopup.style.top = y + 'px';
+    confirmationPopup.style.left = x + 'px';
+
+    
+    document.body.appendChild(confirmationPopup);
+
+   
+    return false;
+}
+</script>
+{% endblock confirmation_popup %}

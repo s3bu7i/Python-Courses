@@ -1,0 +1,76 @@
+.priority-low {
+  color: rgb(0, 0, 0);
+}
+
+.priority-medium {
+  color: blue;
+}
+
+.priority-high {
+  color: red;
+}
+
+.status-incomplete {
+  color: rgb(151, 6, 6);
+}
+
+.status-complete {
+  color: green;
+}
+
+.priority-low, .priority-medium, .priority-high,
+.status-incomplete, .status-complete {
+  font-size: 14px;
+}
+
+.task-title, .task-description {
+  font-size: 14px;
+}
+
+.draggable {
+  cursor: move;
+}
+
+body [dark-theme=true] {
+  background-color: #333 !important;
+  color: #fff;
+}
+
+.modal-content {
+  background-color: #333;
+  color: #fff;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-header h5 {
+  color: #fff;
+}
+
+.modal-header button {
+  color: #fff;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.confirmation-popup {
+  background-color: green;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.confirmation-popup-red {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
