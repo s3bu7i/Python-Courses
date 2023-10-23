@@ -1,0 +1,260 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block content %}
+	
+
+{% for x in data %}
+	
+
+	
+
+	<div id="post-header" class="page-header">
+		<div class="background-img" style="background-image: url('img/post-page.jpg');"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10">
+					<div class="post-meta">
+						<a class="post-category cat-2" href="{% url 'category' x.id %}">{{x.category}}</a>
+						<span class="post-date">March 27, 2018</span>
+					</div>
+					<h1>{{x.basliq}}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-8">
+					<div class="section-row sticky-container">
+						<div class="main-post">
+							<h3>Programming languages</h3>
+							<p>{{x.metn}} </p>
+							<p>{{x.metn2}}</p>
+							<figure class="figure-img">
+								<img class="img-responsive" src="{{ x.img.url }}" alt
+									><noscript><img class="img-responsive"
+										src="img/post-4.jpg" alt></noscript>
+								<figcaption>So Lorem Ipsum is bad (not necessarily)</figcaption>
+							</figure>
+							<p>{{x.metn3}}</p>
+							
+						</div>
+
+
+				{% endfor %}
+						<div class="post-shares sticky-shares">
+							<a href="#" class="share-facebook"><i class="fa fa-facebook"></i></a>
+							<a href="#" class="share-twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="share-google-plus"><i class="fa fa-google-plus"></i></a>
+							<a href="#" class="share-pinterest"><i class="fa fa-pinterest"></i></a>
+							<a href="#" class="share-linkedin"><i class="fa fa-linkedin"></i></a>
+							<a href="#"><i class="fa fa-envelope"></i></a>
+						</div>
+					</div>
+
+					<div class="section-row text-center">
+						<a href="#" style="display: inline-block;margin: auto;">
+							<img class="img-responsive" data-cfsrc="./img/ad-2.jpg" alt
+								style="display:none;visibility:hidden;"><noscript><img class="img-responsive"
+									src="img/ad-2.jpg" alt></noscript>
+						</a>
+					</div>
+
+
+					
+
+
+					<div class="section-row">
+						<div class="section-title">
+							<h2>3 Comments</h2>
+						</div>
+						<div class="post-comments">
+
+							
+							{% for x in comments %}
+								
+							
+								
+								<div class="media">
+									<div class="media-left">
+										<img class="media-object" data-cfsrc="./img/avatar.png" alt
+											style="display:none;visibility:hidden;"><noscript><img class="media-object"
+												src="img/avatar.png" alt></noscript>
+									</div>
+									<div class="media-body">
+										<div class="media-heading">
+											<h4>{{x.name}}</h4>
+											<p>{{x.email}}</p>
+											<span class="time">{{x.date}}</span>
+										</div>
+										<p>{{x.message}}
+										</p>
+
+									
+
+									</div>
+								</div>
+
+
+							{% endfor %}
+
+
+
+						</div>
+					</div>
+
+
+					<div class="section-row">
+						<div class="section-title">
+							<h2>Leave a reply</h2>
+							<p>your email address will not be published. required fields are marked *</p>
+						</div>
+						<form class="post-reply" action="{% url 'blog-post' id %}" method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<span>Name *</span>
+										<input class="input" type="text" name="name">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<span>Email *</span>
+										<input class="input" type="email" name="email">
+									</div>
+								</div>
+								<input type="hidden" name="comment_id" value="{{ id }}">
+								
+								<div class="col-md-8">
+									<div class="form-group">
+										<textarea class="input" name="message" placeholder="Message"></textarea>
+									</div>
+									<button class="primary-button">Submit</button>
+								</div>
+							</div>
+						</form>
+					</div>
+
+				</div>
+
+
+				<div class="col-md-4">
+
+					<div class="aside-widget text-center">
+						<a href="#" style="display: inline-block;margin: auto;">
+							<img class="img-responsive" data-cfsrc="./img/ad-1.jpg" alt
+								style="display:none;visibility:hidden;"><noscript><img class="img-responsive"
+									src="img/ad-1.jpg" alt></noscript>
+						</a>
+					</div>
+
+
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2>Most Read</h2>
+						</div>
+						<div class="post post-widget">
+							<a class="post-img" href="blog-post.html"><img data-cfsrc="./img/widget-1.jpg" alt
+									style="display:none;visibility:hidden;"><noscript><img src="img/widget-1.jpg"
+										alt></noscript></a>
+							<div class="post-body">
+								<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And
+										Development Tools</a></h3>
+							</div>
+						</div>
+						<div class="post post-widget">
+							<a class="post-img" href="blog-post.html"><img data-cfsrc="./img/widget-2.jpg" alt
+									style="display:none;visibility:hidden;"><noscript><img src="img/widget-2.jpg"
+										alt></noscript></a>
+							<div class="post-body">
+								<h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website
+										Design Mockup Into Code Automatically</a></h3>
+							</div>
+						</div>
+						<div class="post post-widget">
+							<a class="post-img" href="blog-post.html"><img data-cfsrc="./img/widget-3.jpg" alt
+									style="display:none;visibility:hidden;"><noscript><img src="img/widget-3.jpg"
+										alt></noscript></a>
+							<div class="post-body">
+								<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The
+										Backend Development Block!</a></h3>
+							</div>
+						</div>
+						<div class="post post-widget">
+							<a class="post-img" href="blog-post.html"><img data-cfsrc="./img/widget-4.jpg" alt
+									style="display:none;visibility:hidden;"><noscript><img src="img/widget-4.jpg"
+										alt></noscript></a>
+							<div class="post-body">
+								<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And
+										Development Tools</a></h3>
+							</div>
+						</div>
+					</div>
+
+
+					
+
+
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2>Catagories</h2>
+						</div>
+						<div class="category-widget">
+							<ul>
+								<li><a href="#" class="cat-1">Web Design<span>340</span></a></li>
+								<li><a href="#" class="cat-2">JavaScript<span>74</span></a></li>
+								<li><a href="#" class="cat-4">JQuery<span>41</span></a></li>
+								<li><a href="#" class="cat-3">CSS<span>35</span></a></li>
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="aside-widget">
+						<div class="tags-widget">
+							<ul>
+								<li><a href="#">Chrome</a></li>
+								<li><a href="#">CSS</a></li>
+								<li><a href="#">Tutorial</a></li>
+								<li><a href="#">Backend</a></li>
+								<li><a href="#">JQuery</a></li>
+								<li><a href="#">Design</a></li>
+								<li><a href="#">Development</a></li>
+								<li><a href="#">JavaScript</a></li>
+								<li><a href="#">Website</a></li>
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2>Archive</h2>
+						</div>
+						<div class="archive-widget">
+							<ul>
+								<li><a href="#">January 2018</a></li>
+								<li><a href="#">Febuary 2018</a></li>
+								<li><a href="#">March 2018</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+{% endblock %}

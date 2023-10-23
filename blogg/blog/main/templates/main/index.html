@@ -1,0 +1,354 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block content %}
+	
+
+
+
+
+	
+	{% comment %}
+		
+	
+		
+
+				
+				{% for x in test %}
+
+
+					{{ x.0 }}  
+					
+					{{ x.1 }}
+
+					
+				{% endfor %}
+	
+		{% endcomment %}
+
+
+		
+		{% comment %}
+			
+		
+			
+			
+			{% for x in test1 %}
+
+
+				{{x.ad}}
+				{{x.category}}
+			
+			{% endfor %}
+
+		{% endcomment %}
+
+
+
+
+	
+
+	<div class="section">
+
+		<div class="container">
+
+			<div class="row">
+
+				
+				{% for x in test %}
+					
+				
+					
+					<div class="col-md-6">
+						<div class="post post-thumb">
+							<a class="post-img" href="{% url 'blog-post' x.id %}"><img style="height: 300px;width:560px;" src="{{x.img.url}}" alt
+									><noscript><img src="{% static 'img/post-1.jpg' %}"
+										alt></noscript></a>
+							<div class="post-body">
+								<div class="post-meta">
+									<a class="post-category cat-2" href="{% url 'category' x.id %}">{{x.category}}</a>
+									<span class="post-date">March 27, 2018</span>
+								</div>
+								<h3 class="post-title"><a href="{% url 'blog-post' x.id %}">{{x.metn}}</a></h3>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+				
+
+			</div>
+
+
+			<div class="row">
+
+				<div class="col-md-12">
+					<div class="section-title">
+						<h2>Recent Posts</h2>
+					</div>
+				</div>
+
+				{% for x in sec %}
+
+				<div class="col-md-4">
+					<div class="post">
+						<a class="post-img" href="{% url 'blog-post' x.id %}"><img style="height: 150px;width:270px;" src="{{x.img.url}}" alt
+								><noscript><img src="{% static 'img/post-3.jpg' %}"
+									alt></noscript></a>
+						<div class="post-body">
+							<div class="post-meta">
+								<a class="post-category cat-1" href="{% url 'category' x.id %}">{{x.category}}</a>
+								<span class="post-date">March 27, 2018</span>
+							</div>
+							<h3 class="post-title"><a href="{% url 'blog-post' x.id %}">{{x.metn|truncatewords:4}}</a></h3>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+				
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-8">
+					<div class="row">
+						{% for x in b %}
+						<div class="col-md-12">
+							<div class="post post-thumb">
+								<a class="post-img" href="{% url 'blog-post' x.id %}"><img src="{{x.img.url}}" alt
+										><noscript><img src="{% static 'img/post-2.jpg' %}"
+											alt></noscript></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-3" href="{% url 'category' x.id %}">{{x.category}}</</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="{% url 'blog-post' x.id %}">What do you understand by Java virtual machine?</a></h3>
+								</div>
+							</div>
+						</div>
+
+						{% endfor %}
+
+
+						{% for x in c %}
+						<div class="col-md-6">
+							<div class="post">
+								<a class="post-img" href="{% url 'blog-post' x.id %}"><img style="height: 150px;width:280px;" src="{{x.img.url}}" alt
+										><noscript><img src="{% static 'img/post-1.jpg' %}"
+											alt></noscript></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-4" href="{% url 'category' x.id %}">{{x.category}}</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="{% url 'blog-post' x.id %}">{{x.metn|truncatewords:4}}</a></h3>
+								</div>
+							</div>
+						</div>
+
+						{% endfor%}
+					</div>
+				</div>
+
+				<div class="col-md-4">
+
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2>Most Read</h2>
+						</div>
+						
+				       {% for x in d %}
+						<div class="post post-widget">
+							<a class="post-img" href="{% url 'blog-post' x.id %}"><img style="height: 100px;width:200px;" src="{{x.img.url}}" alt
+									><noscript><img src="{% static 'img/widget-1.jpg' %}"
+										alt></noscript></a>
+							<div class="post-body">
+								<h3 class="post-title"><a href="{% url 'blog-post' x.id %}"><br><br><br><br><br>{{x.metn|truncatewords:4}}&nbsp;</a></h3>
+							</div>
+						</div>
+
+						{% endfor %}
+						
+					</div>
+
+
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2>Featured Posts</h2>
+						</div>
+
+
+						{% for x in f %}
+						<div class="post post-thumb">
+							<a class="post-img" href="{% url 'blog-post' x.id %}"><img src="{{x.img.url}}" alt
+									><noscript><img src="{% static 'img/post-2.jpg' %}"
+										alt></noscript></a>
+							<div class="post-body">
+								<div class="post-meta">
+									<a class="post-category cat-3" href="category.html">{{x.category}}</a>
+									<span class="post-date">March 27, 2018</span>
+								</div>
+								<h3 class="post-title"><a href="{% url 'blog-post' x.id %}">{{x.metn|truncatewords:4}}</a></h3>
+							</div>
+						</div>
+
+						{% endfor %}
+					</div>
+
+
+					<div class="aside-widget text-center">
+						<a href="" style="display: inline-block;margin: auto;">
+							<img class="img-responsive" src="{% static 'img/ad-1.jpg' %}" alt
+								><noscript><img class="img-responsive"
+									src="{% static 'img/ad-1.jpg' %}" alt></noscript>
+						</a>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="section section-grey">
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title text-center">
+						<h2>Golang</h2>
+					</div>
+				</div>
+
+				
+
+				
+				{% for x in content %}
+					
+					
+
+					<div class="col-md-4">
+						<div class="post">
+							<a class="post-img" href="blog-post.html"><img src="{{ x.img.url }}" alt
+									><noscript><img src="{% static 'img/post-4.jpg' %}"
+										alt></noscript></a>
+							<div class="post-body">
+								<div class="post-meta">
+									<a class="post-category cat-2" href="category.html">{{x.category}}</a>
+									<span class="post-date">March 27, 2018</span>
+								</div>
+								<h3 class="post-title"><a href="blog-post.html">{{x.1|slice:"0:10"}}</a></h3>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+			
+
+		
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="section">
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-title">
+								<h2>Most Read</h2>
+							</div>
+						</div>
+						{% for x in p %}
+						<div class="col-md-12">
+							<div class="post post-row">
+								<a class="post-img" href="{% url 'blog-post' x.id %}"><img src="{{ x.img.url }}" alt
+										><noscript><img src="{% static 'img/post-4.jpg' %}"
+											alt></noscript></a>
+								<div class="post-body">
+									<div class="post-meta">
+										<a class="post-category cat-2" href="category.html">{{x.category}}</a>
+										<span class="post-date">March 27, 2018</span>
+									</div>
+									<h3 class="post-title"><a href="{% url 'blog-post' x.id %}">{{x.metn|truncatewords:4}}</a></h3>
+									<p>{{x.basliq}}</p>
+								</div>
+							</div>
+						</div>
+
+						{% endfor %}
+
+					
+
+
+						
+					</div>
+				</div>
+				<div class="col-md-4">
+
+					<div class="aside-widget text-center">
+						<a href="#" style="display: inline-block;margin: auto;">
+							<img class="img-responsive" src="{% static 'img/ad-1.jpg' %}" alt
+								><noscript><img class="img-responsive"
+									src="{% static 'img/ad-1.jpg' %}" alt></noscript>
+						</a>
+					</div>
+
+
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2>Catagories</h2>
+						</div>
+						<div class="category-widget">
+							<ul>
+
+
+								<li><a href="#" class="cat-2">Golang<span>{{say}}</span></a></li>
+								<li><a href="#" class="cat-4">Python<span>{{say1}}</span></a></li>
+								<li><a href="#" class="cat-3">CSS<span>35</span></a></li>
+
+
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="aside-widget">
+						<div class="tags-widget">
+							<ul>
+								
+								
+								{% for category in data  %}
+
+									<li><a href="{% url 'category' category.id %}">{{category.category}}</a></li>
+									
+								{% endfor %}
+									
+					
+							
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+{% endblock %}
