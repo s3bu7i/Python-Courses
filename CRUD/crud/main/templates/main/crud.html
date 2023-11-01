@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
+    
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Home Page</title>
+  </head>
+  <body>
+    <h1>Home Page</h1>
+    <a href="{% url 'log_out' %}" class="btn btn-primary">Logout</a>
+
+    <center><div  style="color: brown;""><h1>CRUD</h1></div></center>
+    
+
+
+<div style="background-color: antiquewhite;" class="container"> 
+
+
+
+
+
+    {% if edit %}
+
+    <form action="{% url 'update' edit.id %}" method="post">
+    {%csrf_token%}
+
+       
+
+    <br><br>
+    Ad:
+    <input type="text" name="name" class="form-control" placeholder="name" required=""><br><br>
+    Soyad:
+    <input type="text" name="lname" class="form-control" placeholder="lname"  required=""><br>   
+    Email:
+    <input type="text" name="email" class="form-control" placeholder="email"  required=""><br>  
+    Password:
+    <input type="text" name="passw" class="form-control" placeholder="passw"  required=""><br>  
+<br><br>
+
+    <button type="sumbit" class="btn btn-primary">Yenile</button> <
+    </form>
+    
+    {% else %}
+
+
+
+
+
+    <form action="{% url 'crud' %}" method="POST">
+      {%csrf_token%}
+    <br><br>
+    Ad:
+    <input type="text" name="name" class="form-control" placeholder=" Ad:" required=""><br><br>
+    Soyad:
+    <input type="text" name="lname" class="form-control" placeholder="Soyad:"  required=""><br>   
+    Email:
+    <input type="text" name="email" class="form-control" placeholder="Email:"  required=""><br>  
+    Password:
+    <input type="text" name="passw" class="form-control" placeholder="Password:"  required=""><br>  
+
+<br>
+    <button type="sumbit" class="btn btn-success">Daxil et</button>
+    </form>
+<br><br>
+{%endif%}
+
+    <div class="alert alert-danger">Bazada {{say}} eded melumat var. </div>
+
+<table class="table table-hover">
+
+    <thead class="thead-dark">
+
+            <tr>
+           
+
+
+                <th>N</th>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Email</th>
+                <th>pass</th>
+                <th> 
+                    Update
+                </th>
+                   
+                <th>
+                    Delete
+                </th>
+                
+               
+
+
+           </tr>
+
+    </thead>
+<br><br><br>
+    {% for x in data %}   
+    <tbody>
+
+
+        <tr>
+
+            <td>{{forloop.counter}}</td>
+
+         
+
+            <td>{{x.name }}</td>
+            <td>{{x.lname}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.passw}} </td>
+
+            <td>
+                <a class="btn btn-success btn-sm" href="{%url 'edit' x.id %}"> <i class="bi bi-pen"></i> </a>
+            </td>
+
+            <td>
+                <a class="btn btn-danger btn-sm" href="{%url 'delete' x.id %}"> <i class="bi bi-trash"></i> </a>
+            </td>
+               
+
+            
+ 
+        </tr>
+
+    </tbody>
+    {%endfor%}
+
+</table>
+
+</div> 
+
+
+
+</div>
+
+
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <h5 class="text-secondary text-uppercase mb-4">CRUD</h5>
+                <p class="mb-4">Crud hesabi</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Azerbaijan,Baku</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>aqsinnebi222@gmail.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+994 55-379-66-06</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    
+                  
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">Crud</h5>
+                        <p>Crud heyatin bir parcasidir.</p>
+                        <form action="">
+                           
+                        </form>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-secondary">
+                    &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-primary" href="">HTML Codex</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="img/payments.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
