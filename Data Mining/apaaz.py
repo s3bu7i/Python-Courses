@@ -30,7 +30,7 @@ for x in news:
         
         hava = data.find("div",attrs={"class":"weather_navbar-currency"}).find_all("p")[1]
         
-        print(hava)
+        print(foto["src"],category,hava.text)
         
 
     except:TypeError

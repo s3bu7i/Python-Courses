@@ -10,8 +10,6 @@ headers_parame={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWe
 
 request = requests.get(path,headers=headers_parame)
 
-
-
 soup = bs(request.content,"html.parser")
 
 test = soup.find("div",class_ = "x3nfvp2")
