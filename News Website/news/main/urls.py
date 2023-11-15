@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     
+    
     path("",views.home,name="home"),
     path("about/",views.about,name="about"),
 
@@ -12,6 +13,9 @@ urlpatterns = [
     
     path("xeber_panel/news_bot/",views.news_bot,name="news_bot"),
     
+    path("clear/",views.clear,name="clear"),
+    
+    path("news-single/<int:id>",views.news_single,name="news-single"),
     
     
     
