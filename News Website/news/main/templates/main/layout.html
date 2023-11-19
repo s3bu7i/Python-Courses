@@ -158,18 +158,63 @@
                                 </ul>
                             </li>
                             
-
-                            {% for article in category %}
+                          
+                            <!-- SQL SORGUSU -->
+                            {% comment %}
+                                
+                           
                                 
                             
-                              
-                                    {% for category in article.category_id.all %}
+                            {% for x in category %}
 
-                                    {{ category.category }}
-                                    
-                                    {% endfor %}
-                               
+                                {{x.category}}
+                                
                             {% endfor %}
+                                
+                            {% endcomment %}
+
+
+
+
+                            
+                            {% for x in category %}
+
+
+                                {{ x.category}}
+                                
+                                
+                            {% endfor %}
+                                
+                           
+
+
+
+
+
+                              <!-- ManytoMany SORGUSU -->
+                            {% comment %}
+                                
+                           
+                                
+                            
+                                {% for x in category %}
+
+                                    
+                                    {% for category in x.category_id.all|slice:":5" %}
+
+                                        {{category}}
+                                        
+                                    {% endfor %}
+                                        
+                                    
+                                {% endfor %}
+                                
+                            {% endcomment %}
+                        
+
+
+                            
+                         
 
                                 
                             <!-- <li><a href="financial.html">Financial</a></li>
@@ -215,13 +260,42 @@
                             
                         </ul>
                     </div>
-                    <form action="#" class="header--search-form float--right" data-form="validate"> <input type="search"
+
+                    <form action="{% url 'search' %}" class="header--search-form float--right" data-form="validate" method="post"> 
+                        {% csrf_token %}
+
+                        <input type="search"
                             name="search" placeholder="Search..." class="header--search-control form-control" required>
+
                         <button type="submit" class="header--search-btn btn"><i
-                                class="header--search-icon fa fa-search"></i></button> </form>
+                                class="header--search-icon fa fa-search"></i></button> 
+                            
+                    </form>
+
                 </div>
             </div>
         </header>
+
+        {% comment %}
+                                
+                            
+                                
+
+        {% for x in category %}
+            
+        
+        
+            {% for category in x.category_id.all|slice:":5" %}
+
+            {{ category}}
+            
+            {% endfor %}
+        
+
+        {% endfor %}
+
+
+    {% endcomment %}
 
 
         {% block content %}  {% endblock %}

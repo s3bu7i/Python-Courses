@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup as bs
 from django.http import HttpResponseRedirect
 import requests
 from . models import *
+from django.db.models import Q , Count , Sum
 
 
 
@@ -94,12 +95,27 @@ def home(request):
     
     idman = News_data.objects.raw("SELECT * FROM main_news_data WHERE category == 'İDMAN' ")
     
-    category = Test.objects.all().distinct()
+    
+    category = News_data.objects.raw("SELECT * FROM main_news_data GROUP BY category")
+    
+    
+    # select_related
+    # prefetch_related
+    
+    # category = Test.objects.prefetch_related()
+
+    
+    # category = Test.objects.select_related()
+    
+    
     
     
     latest = News_data.objects.all()[3:7]
     news01 = News_data.objects.all()[0:1]
     news02 = News_data.objects.all()[1:3]
+    news03 = News_data.objects.all()[3:7]
+    news04 = News_data.objects.all()[7:11]
+
 
     data = News_data.objects.all()[0:4]
     context = {
@@ -109,7 +125,9 @@ def home(request):
         "news02":news02,
         "latest":latest,
         'category':category,
-        "idman":idman
+        "idman":idman,
+        "news03":news03,
+        "news04":news04
         
         
     }
@@ -134,3 +152,24 @@ def about(request):
 
 def contact(request):
     return render(request,"main/contact.html")
+
+
+def search(request):
+    if request.method == 'POST':
+        q = request.POST["search"]
+        
+        search = News_data.objects.filter(Q(title__contains = q)| Q(text__contains = q)|Q(category__contains = q))
+            
+            
+        count = search.count()
+        
+    context = {
+        
+        'search':search,
+        'count':count
+       
+        
+    }
+    
+    
+    return render(request,"main/search.html",context)

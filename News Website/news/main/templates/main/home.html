@@ -74,6 +74,7 @@
 
                                 </div>
                             </div>
+                            
                             <div class="col-md-6">
                                 <div class="row gutter--15">
 
@@ -206,6 +207,8 @@
                                             <li class="col-xs-12">
                                                 <hr class="divider">
                                             </li>
+
+                                            
                                             <li class="col-xs-6">
                                                 <div class="post--item post--layout-2">
                                                     <div class="post--img"> <a href="news-single-v1.html"
@@ -323,10 +326,18 @@
                                                     </div>
                                                 </div>
                                             </li>
+
+                                            
+                                            {% for x in news04 %}
+                                                
+                                            
+                                                
+
+
                                             <li>
                                                 <div class="post--item post--layout-3">
                                                     <div class="post--img"> <a href="news-single-v1.html"
-                                                            class="thumb"><img src="{% static 'img/home-img/technology-02.jpg' %}"
+                                                            class="thumb"><img src="{{x.img}}"
                                                                 alt=""></a>
                                                         <div class="post--info">
                                                             <ul class="nav meta">
@@ -343,6 +354,14 @@
                                                     </div>
                                                 </div>
                                             </li>
+
+                                            {% endfor %}
+
+                                            
+                                            {% comment %}
+                                                
+                                            
+                                                
                                             <li>
                                                 <div class="post--item post--layout-3">
                                                     <div class="post--img"> <a href="news-single-v1.html"
@@ -403,6 +422,8 @@
                                                     </div>
                                                 </div>
                                             </li>
+
+                                            {% endcomment %}
                                         </ul>
                                         <div class="preloader bg--color-0--b" data-preloader="1">
                                             <div class="preloader--inner"></div>
