@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 import requests
 from . models import *
 from django.db.models import Q , Count , Sum
-
+from django.core.paginator import Paginator
 
 
 
@@ -173,3 +173,34 @@ def search(request):
     
     
     return render(request,"main/search.html",context)
+
+
+def news(request):
+    idman = News_data.objects.raw("SELECT * FROM main_news_data WHERE category == 'İDMAN' ")
+    
+    
+    category = News_data.objects.raw("SELECT * FROM main_news_data GROUP BY category")
+    
+    # Sehifede 10 xeber gorsenecek
+    x = Paginator(News_data.objects.all().order_by("-id"),10)
+    
+    # sehifeni cevirdikce Linkde gorsenecek deyishen adi  , meselen : seh=2
+    page = request.GET.get("seh")
+    
+    
+    # Her sehifesinde 10 melumat saxlayan , icinde xeberlerin oldugu deyishen(fora salacagimiz)
+    news_page = x.get_page(page)
+    
+    # Sehifeler
+    page_range = x.page_range
+    
+    context = {
+        
+        'category':category,
+        "idman":idman,
+        "news_page":news_page,
+        "page_range":page_range,
+        
+        
+    }
+    return render(request,"main/news.html",context)

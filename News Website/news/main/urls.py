@@ -17,7 +17,10 @@ urlpatterns = [
     
     path("news-single/<int:id>",views.news_single,name="news-single"),
     
-    path("search/",views.search,name="search")
+    path("search/",views.search,name="search"),
+    
+    path("news/",views.news,name="news"),
+    
     
     
     
