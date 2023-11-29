@@ -7,15 +7,103 @@ from . models import *
 from django.db.models import Q , Count , Sum
 from django.core.paginator import Paginator
 
+from django.contrib.auth.models import User,auth
+from django.contrib.auth import authenticate
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+def edit(request,id):
+    
+    edit = News_data.objects.get(id=id)
+    
+    
+    context = {
+        
+        'edit':edit
+        
+    }
+    return render(request,"main/xeber_panel.html",context)
 
+
+def update(request,id):
+    
+    if request.method == 'POST':
+        text = request.POST["text"]
+        category = request.POST["category"]
+        title = request.POST["title"]
+        
+        data = News_data.objects.get(id=id)
+        
+        data.text = text
+        data.title = title
+        data.category = category
+        data.save()
+        
+    return redirect("xeber_panel")
+        
+        
+
+
+def register(request):
+    generate = User.objects.make_random_password(length=10,allowed_chars="97654rfgkjpnyzasqe!$@*&")
+
+    if request.method == 'POST':
+        username = request.POST["username"]
+        first_name = request.POST["first_name"]
+        last_name = request.POST["last_name"]
+        email = request.POST["email"]
+        pass1 = request.POST["pass1"]
+        pass2 = request.POST["pass2"]
+        
+        if pass1 == pass2:
+            
+            if User.objects.filter(username=username).exists():
+                messages.info(request,"Bu istifadeci hal-hazirda movcuddur")
+            elif User.objects.filter(email=email).exists():
+                messages.info(request,"Bu email hal-hazirda movcuddur")
+            else:
+                
+                User.objects.create_user(username=username, email=email, password=pass2,first_name=first_name,last_name=last_name).save()
+                
+                return redirect("login")
+            
+        else:
+            messages.info(request,"Parollar uygun deyil")
+
+            
+            
+    return render(request,"main/register.html",{'generate':generate})
+
+def login(request):
+    
+    if request.method == "POST":
+        
+        username = request.POST["username"]
+        password = request.POST["password"]
+        
+        user = authenticate(username=username,password=password)
+        
+        if user is not None:
+            
+            auth.login(request,user)
+    
+    
+            return redirect("home")
+    
+    return render(request,"main/login.html")
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("login")
+
+@login_required(login_url='login')
 def clear(request):
     News_data.objects.all().delete()
     return HttpResponseRedirect(reverse("xeber_panel"))
 
-
+@login_required(login_url='login')
 def xeber_panel(request):
     
     
@@ -31,10 +119,11 @@ def xeber_panel(request):
         
         
     }
+    
     return render(request, "main/xeber_panel.html",context)
 
 
-
+@login_required(login_url='login')
 def news_bot(request):
 
     data = requests.get("https://lent.az")
@@ -203,4 +292,6 @@ def news(request):
         
         
     }
+    
+    
     return render(request,"main/news.html",context)
