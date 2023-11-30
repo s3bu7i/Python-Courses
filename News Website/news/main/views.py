@@ -295,3 +295,8 @@ def news(request):
     
     
     return render(request,"main/news.html",context)
+
+
+
+
+
