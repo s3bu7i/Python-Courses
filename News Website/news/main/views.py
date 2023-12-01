@@ -3,6 +3,7 @@ from django.urls import reverse
 from bs4 import BeautifulSoup as bs
 from django.http import HttpResponseRedirect
 import requests
+import json
 from . models import *
 from django.db.models import Q , Count , Sum
 from django.core.paginator import Paginator
@@ -11,6 +12,23 @@ from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+
+
+def active(request,id):
+    data = News_data.objects.get(id=id)
+    data.is_active = 1
+    data.save()
+    return redirect("xeber_panel")
+
+def block(request,id):
+    data = News_data.objects.get(id=id)
+    data.is_active = 0
+    data.save()
+
+    return redirect("xeber_panel")
+
+
 
 
 def edit(request,id):
@@ -46,7 +64,6 @@ def update(request,id):
 
 
 def register(request):
-    generate = User.objects.make_random_password(length=10,allowed_chars="97654rfgkjpnyzasqe!$@*&")
 
     if request.method == 'POST':
         username = request.POST["username"]
@@ -73,7 +90,7 @@ def register(request):
 
             
             
-    return render(request,"main/register.html",{'generate':generate})
+    return render(request,"main/register.html")
 
 def login(request):
     
@@ -132,6 +149,11 @@ def news_bot(request):
 
     soup = url.find("div",class_ = "all-news-wrapper")
 
+
+
+
+
+
     for x in soup:
         
         
@@ -160,7 +182,20 @@ def news_bot(request):
             
             weather = soup1.find("div",class_ = "top_section").find_all("li")[3].text            
 
+            response = requests.get("https://api.openweathermap.org/data/2.5/weather?q=Baku&appid=99a41dbd8a4f2daca52453c067961160")
+            data = response.text
+
+
+
+
+            data = json.loads(data)
+
+
+
+
+            weather = data["main"]["temp"] - 273.15
             
+            weather = round(weather)
             
         
             News_data(text=text,title=title,date=date,category=category,weather=weather,img=image).save()
@@ -190,23 +225,22 @@ def home(request):
     
     # select_related
     # prefetch_related
-    
     # category = Test.objects.prefetch_related()
-
-    
     # category = Test.objects.select_related()
     
+    latest = News_data.objects.all().order_by("-id")[3:7]
     
+    news01 = News_data.objects.all()
     
-    
-    latest = News_data.objects.all()[3:7]
-    news01 = News_data.objects.all()[0:1]
-    news02 = News_data.objects.all()[1:3]
-    news03 = News_data.objects.all()[3:7]
-    news04 = News_data.objects.all()[7:11]
+    news02 = News_data.objects.all().order_by("-id")[1:3]
+    news03 = News_data.objects.all().order_by("-id")[3:7]
+    news04 = News_data.objects.all().order_by("-id")[7:11]
 
 
-    data = News_data.objects.all()[0:4]
+    data = News_data.objects.all().order_by("-id")[0:4]
+    
+    weather = News_data.objects.last()
+    
     context = {
         
         "data":data,
@@ -216,7 +250,8 @@ def home(request):
         'category':category,
         "idman":idman,
         "news03":news03,
-        "news04":news04
+        "news04":news04,
+        "weather":weather
         
         
     }
@@ -233,31 +268,25 @@ def news_single(request,id):
     }
     return render(request,"main/news-single.html",context)
 
-
 def about(request):
     return render(request,"main/about.html")
 
-
-
 def contact(request):
     return render(request,"main/contact.html")
-
 
 def search(request):
     if request.method == 'POST':
         q = request.POST["search"]
         
         search = News_data.objects.filter(Q(title__contains = q)| Q(text__contains = q)|Q(category__contains = q))
-            
-            
+                  
         count = search.count()
         
     context = {
         
         'search':search,
         'count':count
-       
-        
+         
     }
     
     
@@ -267,19 +296,15 @@ def search(request):
 def news(request):
     idman = News_data.objects.raw("SELECT * FROM main_news_data WHERE category == 'İDMAN' ")
     
-    
     category = News_data.objects.raw("SELECT * FROM main_news_data GROUP BY category")
-    
     # Sehifede 10 xeber gorsenecek
     x = Paginator(News_data.objects.all().order_by("-id"),10)
     
     # sehifeni cevirdikce Linkde gorsenecek deyishen adi  , meselen : seh=2
     page = request.GET.get("seh")
     
-    
     # Her sehifesinde 10 melumat saxlayan , icinde xeberlerin oldugu deyishen(fora salacagimiz)
     news_page = x.get_page(page)
-    
     # Sehifeler
     page_range = x.page_range
     
@@ -288,15 +313,11 @@ def news(request):
         'category':category,
         "idman":idman,
         "news_page":news_page,
-        "page_range":page_range,
-        
-        
+        "page_range":page_range,   
     }
-    
     
     return render(request,"main/news.html",context)
 
 
-
-
+def forgotpassword
 
