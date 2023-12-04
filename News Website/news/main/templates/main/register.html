@@ -42,7 +42,6 @@
                         <p>Login into account by fillup the below form</p>
                     </div>
 
-                    
 
                     <form action="#" data-form="validate">
                         <div class="form-group"> <label> <span>Username or Email Address</span> <input type="email"
@@ -57,14 +56,27 @@
                         <div class="form-group"> <label> <span>Last_name</span> <input type="text"
                                 name="last_name" class="form-control" required> </label> </div>
 
-                        <div class="form-group"> <label> <span>Password</span> <input type="text"
-                                 name="pass1" class="form-control"   required> </label> </div>
+                        <div class="form-group"> <label> <span>Password</span> <input type="password"
+                                 name="pass1" class="form-control" id="id_password1"  required> </label> 
+
+                                </div>
+                                <span style="cursor: pointer;" class="toggle-password1 icon" onclick="togglePassword()">
+                                    <!-- Unicode for an eye icon -->
+                                    &#128065;
+                                  </span>
+
+                      
+                            
 
                         
-                        <div class="form-group"> <label> <span>Password Again</span> <input type="text"
-                                name="pass2" class="form-control"  required> </label> </div>
-                               
+                        <div class="form-group"> <label> <span>Password Again</span> <input type="password"
+                                name="pass2" class="form-control" id="id_password2" required> </label> </div>
 
+                               
+                                <span style="cursor: pointer;" class="toggle-password2 icon" onclick="togglePassword1()">
+                                    <!-- Unicode for an eye icon -->
+                                    &#128065;
+                                  </span>
                         
 
 
@@ -75,10 +87,91 @@
                                 Password?</a> <a href="#" class="btn-link pull-right">Create An Account</a> </p>
                     </form>
 
+                    <button   type="button" id="suggestPassword" >Generate</button>
+
+
+                    <style>
+
+
+                        
+
+                        .toggle-password1 {
+
+                            position: absolute;
+                            bottom: 430px;
+                            right: 105px;
+                            margin: 0; /* Resetting margin to 0 */
+                            padding: initial; /* Resetting padding to its initial value */
+                            color: inherit;
+                            
+                        }
+
+                        .toggle-password2 {
+
+                            position: absolute;
+                            right: 105px;
+                            bottom: 360px;
+                            margin: 0; /* Resetting margin to 0 */
+                            padding: initial; /* Resetting padding to its initial value */
+                            color: inherit;
+                            
+                        }
+
+                    </style>
+
                 </div>
             </div>
         </div>
     </div>
+
+
+    <script>
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            function suggestPassword() {
+                
+                let password
+                password = "{{generated_password}}";
+                
+                document.getElementById("id_password1").value = password;
+                document.getElementById("id_password2").value = password;
+    
+            }
+        
+            document.getElementById("suggestPassword").addEventListener("click", suggestPassword);
+        });
+
+
+
+        function togglePassword() {
+
+            var passwordInput = document.getElementById("id_password1");
+
+        
+            // Toggle the input type between "password" and "text"
+            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+
+
+          }
+
+           function togglePassword1() {
+
+            var passwordInput = document.getElementById("id_password2");
+
+        
+            // Toggle the input type between "password" and "text"
+            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+
+
+          }
+    
+      
+        
+    </script>
+
+
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.sticky.min.js' %}"></script>

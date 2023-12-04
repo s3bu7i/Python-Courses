@@ -29,7 +29,6 @@ urlpatterns = [
 
     
     path('edit/<int:id>',views.edit,name="edit"),
-    
     path('update/<int:id>',views.update,name="update"),
     
     
@@ -37,14 +36,11 @@ urlpatterns = [
     
     
     path('active/<int:id>',views.active,name="active"),
-    
     path('block/<int:id>',views.block,name="block"),
-
-
-
-   
     
     
+    path("category/<int:id>",views.category,name="category"),
+
     
     
 ]

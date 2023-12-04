@@ -511,11 +511,20 @@
                                 </div>
                                 <div class="nav--widget">
                                     <ul class="nav">
-                                        <li><a href="#"><span>Fashion</span><span>(22)</span></a></li>
-                                        <li><a href="#"><span>Winter</span><span>(16)</span></a></li>
-                                        <li><a href="#"><span>Exclusive</span><span>(84)</span></a></li>
-                                        <li><a href="#"><span>Summer</span><span>(11)</span></a></li>
-                                        <li><a href="#"><span>Heavy Style</span><span>(19)</span></a></li>
+
+                                      
+                                        
+                                        {% for category in cate %}
+                                            
+                                        
+                                            
+                                        
+                                            <li><a href="#"><span>{{category.category}}</span><span>{{category.say}}</span></a></li>
+
+
+
+                                        {% endfor %}
+
                                     </ul>
                                 </div>
                             </div>
@@ -525,17 +534,12 @@
                                 </div>
                                 <div class="tags--widget style--1">
                                     <ul class="nav">
-                                        <li><a href="#">News</a></li>
-                                        <li><a href="#">Image</a></li>
-                                        <li><a href="#">Music</a></li>
-                                        <li><a href="#">Video</a></li>
-                                        <li><a href="#">Audio</a></li>
-                                        <li><a href="#">Fashion</a></li>
-                                        <li><a href="#">Latest</a></li>
-                                        <li><a href="#">Trendy</a></li>
-                                        <li><a href="#">Special</a></li>
-                                        <li><a href="#">Recipe</a></li>
-                                        <li><a href="#">Sports</a></li>
+                                        {% for cat in cat %}
+
+                                            <li><a href="#">{{cat.category}}</a></li>
+
+                                        {% endfor %}
+                                        
                                     </ul>
                                 </div>
                             </div>
