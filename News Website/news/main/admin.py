@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from . models import *
 
-# admin.site.register(News_data)
+admin.site.register(Test)
 
 @admin.register(News_data)
 class NewsAdmin(admin.ModelAdmin):

@@ -4,10 +4,32 @@
 <!-- Mirrored from themelooks.us/demo/usnews/html/home-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Nov 2023 10:25:49 GMT -->
 
 <head>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>USNews - Multipurpose News, Magazine and Blog HTML5 Template</title>
+    <title>
+
+        
+        {% block title %} {% endblock title %}
+            
+
+        {% if news %}
+
+            
+            {% for x in news %}
+
+                {{x.title}}
+                
+            {% endfor %}
+                
+
+        {% endif %}
+
+
+    </title>
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <meta name="author" content="ThemeLooks">
     <meta name="description" content="USNews - Multipurpose News and Magazine Template">
     <meta name="keywords"

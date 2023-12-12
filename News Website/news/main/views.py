@@ -174,7 +174,10 @@ def news_bot(request):
             
             text = soup1.find("div",class_ = "news_content").text
             # text = ''.join(map(str,text))
-
+            
+            text = text.replace("Lent.az","")
+            
+           
             
             image = soup1.find("div",class_ = "news_img").find("img")
             
@@ -219,7 +222,11 @@ def news_bot(request):
 
 
 
+
 def home(request):
+    
+    
+    
     
     running_text = News_data.objects.all()[11:14]
     
@@ -295,9 +302,24 @@ def category(request,id):
     
     return render(request,"main/category.html",context)
 
+# get_object_or_404 ya obyekti geri qaytarir ya da(yoxdursa) 404 sehifesine gedir
 
 def news_single(request,id):
+    
     news = News_data.objects.filter(id=id)
+    
+    viewer = get_object_or_404(News_data, id=id)
+
+    
+    ip_address = request.ip_address
+    
+    
+    session_key = f'viewed_article_{id}_by_ip_{ip_address}'
+    
+    if session_key not in request.session:
+        viewer.view += 1
+        viewer.save()
+        request.session[session_key] = True
     
    
     
@@ -305,8 +327,8 @@ def news_single(request,id):
         
         'news':news,
         
-        
     }
+    
     return render(request,"main/news-single.html",context)
 
 
@@ -384,4 +406,4 @@ def news(request):
 
 def error_page(request,exception):
     
-    return render(request,"main/404.html",status=404)
+    return render(request,"404.html",status=404)

@@ -4,6 +4,7 @@ from django.db import models
 
 
 
+
 class News_data(models.Model):
     
     
@@ -14,8 +15,9 @@ class News_data(models.Model):
     date = models.CharField(max_length=50,null=True,blank=True)
     weather = models.CharField(max_length=100,null=True,blank=True)
     is_active = models.BooleanField(default=1)
+    view = models.PositiveIntegerField(default=0)
     
-    
+
     
     def __str__(self):
         return self.category
@@ -24,6 +26,8 @@ class News_data(models.Model):
 
 
 
+class Test(models.Model):
     
-
+    img = models.FileField(upload_to="images/")
+    video = models.FileField(upload_to="videos/")
    
