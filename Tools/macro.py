@@ -13,5 +13,4 @@ while i < limit:
     pt.press("enter")
     i = i + 1
     print(i)
-
     time.sleep(interval)
