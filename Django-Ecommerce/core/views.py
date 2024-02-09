@@ -212,26 +212,6 @@ class CheckoutView(View):
             return redirect("core:order-summary")
 
 
-# def home(request):
-#     context = {
-#         'items': Item.objects.all()
-#     }
-#     return render(request, "index.html", context)
-#
-#
-# def products(request):
-#     context = {
-#         'items': Item.objects.all()
-#     }
-#     return render(request, "product-detail.html", context)
-#
-#
-# def shop(request):
-#     context = {
-#         'items': Item.objects.all()
-#     }
-#     return render(request, "shop.html", context)
-
 
 @login_required
 def add_to_cart(request, slug):
@@ -299,7 +279,7 @@ def remove_single_item_from_cart(request, slug):
         ordered=False)
     if order_qs.exists():
         order = order_qs[0]
-        # check if the order item is in the order
+  
         if order.items.filter(item__slug=item.slug).exists():
             order_item = OrderItem.objects.filter(
                 item=item,
@@ -351,6 +331,11 @@ class AddCouponView(View):
                 return redirect("core:checkout")
 
 
+class LoginView(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, "login.html")
+    
+
 class RequestRefundView(View):
     def get(self, *args, **kwargs):
         form = RefundForm()
@@ -384,3 +369,7 @@ class RequestRefundView(View):
             except ObjectDoesNotExist:
                 messages.info(self.request, "This order does not exist")
                 return redirect("core:request-refund")
+
+
+def custom_404(request, exception):
+    return render(request, '404.html', status=404)

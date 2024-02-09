@@ -1,7 +1,9 @@
 from django.urls import path
+from django.views import View
 from .views import (
     ItemDetailView,
     HomeView,
+    LoginView,
     add_to_cart,
     remove_from_cart,
     ShopView,
@@ -13,7 +15,7 @@ from .views import (
     RequestRefundView,
     CategoryView
 )
-
+handler404 = 'core.views.custom_404'
 app_name = 'core'
 
 urlpatterns = [
@@ -29,5 +31,7 @@ urlpatterns = [
     path('remove-item-from-cart/<slug>/', remove_single_item_from_cart,
          name='remove-single-item-from-cart'),
     path('payment/<payment_option>/', PaymentView.as_view(), name='payment'),
-    path('request-refund/', RequestRefundView.as_view(), name='request-refund')
+    path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
+    path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
+    path('accounts/login/', LoginView.as_view(), name='login'),
 ]

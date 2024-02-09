@@ -3,9 +3,6 @@ from django.contrib import admin
 from .models import Item, OrderItem, Order, Payment, Coupon, Refund, BillingAddress, Category, Slide
 
 
-# Register your models here.
-
-
 def make_refund_accepted(modeladmin, request, queryset):
     queryset.update(refund_requested=False, refund_granted=True)
 
