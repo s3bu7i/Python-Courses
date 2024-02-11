@@ -1,3 +1,9 @@
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .forms import ContactForm
+from core.forms import ContactForm
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
@@ -9,16 +15,26 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from .forms import CheckoutForm, CouponForm, RefundForm
 from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon, Refund, Category
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.template import RequestContext
 from django.shortcuts import render
+from django.core.validators import EmailValidator
+from .forms import ContactForm
 
 
 # Create your views here.
 import random
 import string
 import stripe
+from django.core.mail import send_mail
+
+from core import forms
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
+def send_contact_email(request):
+    # Your email sending logic here
+    return JsonResponse({'message': 'Email sent successfully'})
 
 
 def create_ref_code():
@@ -212,7 +228,6 @@ class CheckoutView(View):
             return redirect("core:order-summary")
 
 
-
 @login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
@@ -279,7 +294,7 @@ def remove_single_item_from_cart(request, slug):
         ordered=False)
     if order_qs.exists():
         order = order_qs[0]
-  
+
         if order.items.filter(item__slug=item.slug).exists():
             order_item = OrderItem.objects.filter(
                 item=item,
@@ -334,7 +349,7 @@ class AddCouponView(View):
 class LoginView(View):
     def get(self, *args, **kwargs):
         return render(self.request, "login.html")
-    
+
 
 class RequestRefundView(View):
     def get(self, *args, **kwargs):
@@ -373,3 +388,48 @@ class RequestRefundView(View):
 
 def custom_404(request, exception):
     return render(request, '404.html', status=404)
+
+
+# def contact(request):
+#     if request.method == 'POST':
+#         form = ContactForm(request.POST)
+#         if form.is_valid():
+#             # Process the form data
+#             pass
+#             return redirect('success')
+#     else:
+#         form = ContactForm()
+#     return render(request, 'index.html', {'form': form})
+
+
+# def success(request):
+#    return HttpResponse('Success!')
+
+def about_us(request):
+    return render(request, 'about_us.html')
+
+def contact_form(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        subject = 'Message from {}'.format(name)
+        message = 'Sender Email: {}\n\n{}'.format(email, message)
+
+        send_mail(
+            subject,
+            message,
+            settings.EMAIL_HOST_USER,
+            ['qasimzadasabuhi@mail.ru'],
+            fail_silently=False,
+        )
+
+        return redirect('index.html')
+    else:
+        return render(request, 'contact_form.html')
+
+
+
+
+

@@ -2,6 +2,10 @@
 {% load cart_template_tags %}
 {% load category_template_tags %}
 
+
+
+
+
 <style>
 	.topbar {
 		background-color: white;
@@ -66,15 +70,14 @@
 
 						{% if request.user.is_authenticated %}
 						<li>
-							<a href="{% url 'core:order-summary' %}">Cart<span class="badge badge-dark">{{
-									request.user|cart_item_count }}</span></a>
+							<a href="{% url 'core:order-summary' %}">Cart<span class="badge badge-dark"></span></a>
 						</li>
 						<li>
 							<a href="{% url 'account_logout' %}">Logout</a>
 						</li>
 						{% else %}
 						<li>
-							<a href="./aboutus.html">About Us</a>
+							<a href="{% url 'about_us' %}">About Us</a>
 						</li>
 						<li>
 							<a href="#">Login</a>

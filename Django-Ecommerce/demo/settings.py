@@ -3,9 +3,10 @@ import os
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
 
-DEBUG = False
+DEBUG = True
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = ['*']
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj'
@@ -120,5 +121,15 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 STRIPE_PUBLIC_KEY = 'pk_test_lX3r6OMjOU2yzFsNSHq6belT00EY82kZmH'
 STRIPE_SECRET_KEY = 'sk_test_tn0CTDaIJHUJyAqhsf39cfsC00LNjsqDnb'
 
+# settings.py
 
-#C:\Users\Dino\Documents\GitHub\Python-Courses\Django-Ecommerce\env\Scripts\activate
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "https://e.mail.ru/"  # Example: smtp.gmail.com
+EMAIL_PORT = 587  # Example: 587 for TLS
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "qasimzadasabuhi@mail.ru"
+EMAIL_HOST_PASSWORD = "yZE0Z5RHJ@9ZPGt"
+
+
+
+# C:\Users\Dino\Documents\GitHub\Python-Courses\Django-Ecommerce\env\Scripts\activate

@@ -1,10 +1,15 @@
 from django.urls import path
 from django.views import View
+from .views import send_contact_email
+from django.urls import path
+from . import views
+
 from .views import (
     ItemDetailView,
     HomeView,
     LoginView,
     add_to_cart,
+    contact_form,
     remove_from_cart,
     ShopView,
     OrderSummaryView,
@@ -13,8 +18,10 @@ from .views import (
     PaymentView,
     AddCouponView,
     RequestRefundView,
-    CategoryView
+    CategoryView,
+    send_contact_email
 )
+from core import views
 handler404 = 'core.views.custom_404'
 app_name = 'core'
 
@@ -34,4 +41,7 @@ urlpatterns = [
     path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
     path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
     path('accounts/login/', LoginView.as_view(), name='login'),
+    path('about/', views.about_us, name='about_us'),
+    # path('send-contact-email/', send_contact_email, name='send_contact_email'),
+    #path('contact/', views.contact_form(), name='index'),
 ]

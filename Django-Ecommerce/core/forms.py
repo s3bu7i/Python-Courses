@@ -1,3 +1,4 @@
+from django.core.validators import EmailValidator
 from django import forms
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
@@ -7,6 +8,17 @@ PAYMENT_CHOICES = (
     ('P', 'PayPal')
 )
 
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
+
+
+# class ContactForm(forms.Form):
+#     name = forms.CharField(max_length=100)
+#     email = forms.CharField(validators=[EmailValidator()])
+#     message = forms.CharField(widget=forms.Textarea)
 
 class CheckoutForm(forms.Form):
     street_address = forms.CharField(widget=forms.TextInput(attrs={
