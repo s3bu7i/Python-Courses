@@ -405,8 +405,8 @@ def custom_404(request, exception):
 # def success(request):
 #    return HttpResponse('Success!')
 
-def about_us(request):
-    return render(request, 'about_us.html')
+def about(request):
+    return render(request, 'about.html')
 
 def contact_form(request):
     if request.method == 'POST':

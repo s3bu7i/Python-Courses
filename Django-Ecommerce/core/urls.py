@@ -41,7 +41,7 @@ urlpatterns = [
     path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
     path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
     path('accounts/login/', LoginView.as_view(), name='login'),
-    path('about/', views.about_us, name='about_us'),
+    path('about/', views.about, name='about'),
     # path('send-contact-email/', send_contact_email, name='send_contact_email'),
     #path('contact/', views.contact_form(), name='index'),
 ]
