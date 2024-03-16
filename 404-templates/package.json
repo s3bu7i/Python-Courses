@@ -1,0 +1,31 @@
+{
+  "name": "404-templates",
+  "version": "1.0.0",
+  "private": true,
+  "description": "tsParticles 404 templates",
+  "keywords": [
+    "404",
+    "templates"
+  ],
+  "author": "Matteo Bruni",
+  "license": "ISC",
+  "scripts": {
+    "lint": "eslint --ext .js,.html . --fix",
+    "lint:ci": "eslint --ext .js,.html .",
+    "prettier": "prettier --write \"**/*.{js,ts,json,css,scss,html,md}\"",
+    "prettier:ci": "prettier --check \"**/*.{js,ts,json,css,scss,html,md}\"",
+    "build": "npm run prettier && npm run lint",
+    "build:ci": "npm run prettier:ci && npm run lint:ci"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-n": "^16.2.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^3.0.3"
+  }
+}
