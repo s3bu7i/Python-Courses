@@ -1,26 +1,39 @@
-import random
+def is_prime(num):
+    if num <= 1:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
 
-# result = dir(random)
-# result = help(random)
 
-result = random.random() # 0.0 - 1.0
-result = random.random() * 100
-result = int(random.uniform(10,100))
-result = random.randint(1,100)
+def is_complex(num):
+    for i in range(2, num):
+        if num % i == 0:
+            return True
+    return False
 
-greeting = 'hello there'
-names = ['ali','yağmur','deniz','cenk','ahmet','efe']
-# result = names[random.randint(0,len(names)-1)]
 
-result = random.choice(names)
-result = random.choice(greeting)
+def generate_permutation(n):
+    if n <= 2:
+        return [-1]
 
-liste = list(range(10))
-random.shuffle(liste)
-result = liste
+    permutation = list(range(1, n + 1))
 
-liste = range(100)
-result = random.sample(liste, 3)
-result = random.sample(names, 2)
+    for i in range(n - 1):
+        if is_complex(sum(permutation[:i+1])):
+            permutation[i], permutation[i+1] = permutation[i+1], permutation[i]
 
-print(result)
+    if is_complex(sum(permutation)):
+        return permutation
+    else:
+        return [-1]
+
+
+n1 = 3
+result1 = generate_permutation(n1)
+print(*result1)
+
+n2 = 4
+result2 = generate_permutation(n2)
+print(*result2)
