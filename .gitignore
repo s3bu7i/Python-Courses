@@ -1,0 +1,10 @@
+
+# Node / Next
+node_modules/
+.next/
+dist/
+build/
+out/
+coverage/
+*.log
+.env*
