@@ -1,4 +1,4 @@
-Django==5.0.7
+Django==5.1.14
 psycopg2-binary==2.9.9
 python-slugify==8.0.4
 Pillow==10.4.0
